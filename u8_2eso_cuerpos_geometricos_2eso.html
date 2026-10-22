@@ -1,0 +1,392 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Áreas y volúmenes de cuerpos geométricos - 2.º ESO Matemáticas</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff6dc;--card:#fff;--ink:#1d2a5b;--soft:#5a668f;--ok:#1f9e89;--hi:#ffc93c;--bad:#e5533d;--line:#e8dcb5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141a36;--card:#1e2650;--ink:#f4f1e6;--soft:#aab3da;--line:#34407a;--ok:#46d1bb}}
+:root[data-theme="dark"]{--bg:#141a36;--card:#1e2650;--ink:#f4f1e6;--soft:#aab3da;--line:#34407a;--ok:#46d1bb}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 17px/1.5 Fredoka,"Trebuchet MS",system-ui,sans-serif}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:clamp(26px,6vw,38px);line-height:1.1;margin:0 0 6px;font-weight:600}
+.sub{color:var(--soft);margin:0 0 16px}
+.name{display:flex;gap:8px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
+input{font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:12px;padding:8px 12px;min-width:0}
+input:focus,button:focus-visible,summary:focus-visible{outline:3px solid var(--hi);outline-offset:2px}
+.tabs{display:flex;flex-wrap:wrap;gap:10px;padding:4px 2px 14px}
+.tab{flex:0 0 auto;border:2px solid var(--ink);background:var(--card);color:var(--ink);border-radius:14px;padding:8px 12px;font:inherit;font-weight:600;cursor:pointer;box-shadow:0 4px 0 var(--ink)}
+.tab[aria-selected=true]{background:var(--hi);color:#1d2a5b}
+.tab.done{border-color:var(--ok);box-shadow:0 4px 0 var(--ok)}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px}
+details{background:var(--card);border:2px dashed var(--hi);border-radius:14px;padding:10px 14px;margin-bottom:14px}
+summary{cursor:pointer;font-weight:600}
+details p{margin:8px 0 0}
+.q{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
+.q input{width:130px}
+.q .t{flex:1 1 100%}
+button.go{font:inherit;font-weight:600;background:var(--ink);color:var(--bg);border:0;border-radius:12px;padding:9px 16px;cursor:pointer}
+.msg{font-weight:600}.good{color:var(--ok)}.wrong{color:var(--bad)}
+.big{font-size:56px;font-weight:600;line-height:1}
+.row{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;margin-top:8px}
+sup{font-size:.7em}
+.crit{padding:8px 0;border-bottom:1px solid var(--line)}.crit small{color:var(--soft);display:block}h2{font-size:20px;margin:18px 0 6px}.bar{height:8px;border-radius:6px;background:var(--line);overflow:hidden;margin-top:4px}.bar i{display:block;height:100%;background:var(--ok)}
+.opts{display:flex;flex-wrap:wrap;gap:8px}.opts label{display:flex;gap:6px;align-items:center;border:2px solid var(--line);border-radius:12px;padding:6px 12px;cursor:pointer;background:var(--card)}.q .opts input{width:auto;accent-color:var(--ok)}
+@media print{body{background:#fff;color:#000}main>.sub,.tabs,.go,#pm,.pbar,#pn,#av,.hb{display:none!important}.card{break-inside:avoid;border-color:#999}main{max-width:none}}
+.opts input[type=radio]{width:auto;min-width:0;padding:0;accent-color:var(--ok)}
+textarea{font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:12px;padding:8px;word-break:break-all}
+.gr{flex:1 1 100%}.gr svg{display:block}.gt{fill:var(--ink);font:12px Fredoka,"Trebuchet MS",sans-serif}.gl{stroke:var(--line);stroke-width:1}.gs{fill:var(--hi);stroke:var(--ink);stroke-width:2}.gc{fill:var(--card);stroke:var(--ink);stroke-width:2}.gp{fill:var(--ok);stroke:var(--ink);stroke-width:1}
+.avbar{display:flex;gap:10px;align-items:center;background:var(--bg);padding:6px 0;margin-bottom:6px}.bub{flex:1;background:var(--card);border:2px solid var(--ink);border-radius:16px;padding:8px 12px;font-size:15px;line-height:1.35}.hint{background:var(--card);border:2px dashed var(--hi);border-radius:12px;padding:6px 10px;font-size:15px}.avh{fill:var(--hi);stroke:var(--ink);stroke-width:2.5}.av1{fill:var(--ink)}.av2{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linecap:round}.av3{fill:var(--ink);stroke:var(--ink);stroke-width:2}.hb{background:var(--hi)!important;color:#1d2a5b!important}
+.hintc{display:flex;gap:10px;align-items:center}.hav svg{width:46px;height:auto;display:block}
+@keyframes pop{0%{transform:scale(.6) rotate(-8deg)}60%{transform:scale(1.15) rotate(6deg)}100%{transform:none}}.hav.pop svg{animation:pop .45s ease-out}@media(prefers-reduced-motion:reduce){.hav.pop svg{animation:none}}
+
+body{transition:background .4s;border-top:10px solid var(--hi)}
+.card{box-shadow:0 4px 0 var(--line)}
+.tab::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--hi);border:1.5px solid var(--ink);margin-right:6px}
+.ban{display:flex;gap:12px;align-items:center;background:var(--hi);color:#1d2a5b;border-radius:16px;padding:10px 16px;margin-bottom:14px;font-size:22px;font-weight:600;border:2px solid var(--ink)}
+.ban span{font-size:34px;line-height:1}.ban small{display:block;font-size:13px;font-weight:500;opacity:.8}
+.rhero{display:flex;flex-wrap:wrap;align-items:center;gap:14px;border-radius:18px;padding:16px;color:#1d2a5b;border:2px solid #1d2a5b;background:linear-gradient(120deg,#ff7eb6,#ffc93c 40%,#6fd68a 70%,#5bb8ff)}
+.rav svg{width:100px;height:auto;display:block}
+.rtx{flex:1 1 180px;min-width:0}.rk{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}.rn{font-size:26px;font-weight:600;line-height:1.15;word-break:break-word}.rc{font-size:14px}.rs{font-size:22px;margin-top:4px}
+.rg{margin-left:auto;text-align:center;background:#fff;color:#1d2a5b;border:3px solid #1d2a5b;border-radius:50%;width:124px;height:124px;display:flex;flex-direction:column;justify-content:center;align-items:center;line-height:1.1}
+.rg .big{font-size:42px}.rg b{font-size:13px}
+.rmsg{margin:14px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}.chip{flex:1 1 90px;border-radius:14px;padding:8px 10px;font-weight:600;color:#1d2a5b;text-align:center;font-size:13px;border:2px solid #1d2a5b}.chip b{display:block;font-size:24px;line-height:1.1}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+.bc{border:2px solid var(--line);border-left:10px solid var(--c);border-radius:14px;padding:10px 12px;background:var(--card)}
+.bc .row{border:0;padding:0;align-items:center}.pill{background:var(--c);color:#1d2a5b;border-radius:999px;padding:2px 12px;font-weight:600;white-space:nowrap}.bc small{color:var(--soft);display:block;margin-top:4px;font-size:12px;line-height:1.3}
+.bh{color:#1d2a5b;border-radius:10px;padding:4px 12px;margin:14px 0 4px}
+.sys{display:inline-block;border-left:4px solid var(--hi);padding:2px 0 2px 10px;margin:4px 8px;vertical-align:middle;line-height:1.6;font-weight:600}
+.gd{flex:1 1 100%;display:flex;flex-direction:column;gap:8px}
+.stp{border:2px solid var(--line);border-radius:12px;padding:8px 12px;background:var(--card)}
+.stp.cur{border-color:var(--hi);border-style:dashed}.stp.okk{border-color:var(--ok)}.stp.kos{border-color:var(--bad)}
+.stp .q2{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:6px}
+@media print{*{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{border-top:0}.ban{display:none}}
+.tl{fill:var(--ink);font:600 15px Fredoka,"Trebuchet MS",system-ui,sans-serif}.tv{fill:var(--soft);font:600 17px Fredoka,"Trebuchet MS",system-ui,sans-serif}
+.pr{display:none}@media print{.pr{display:block}}.tg{fill:var(--ink);font:600 13px Fredoka,"Trebuchet MS",sans-serif}.f1{fill:var(--hi);fill-opacity:.7;stroke:var(--ink);stroke-width:2;stroke-linejoin:round}.f2{fill:var(--hi);fill-opacity:.3;stroke:var(--ink);stroke-width:2;stroke-linejoin:round}.hid{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-dasharray:5 4}.dm{fill:none;stroke:var(--bad);stroke-width:2.5;stroke-dasharray:5 3}.sc{fill:var(--bad);fill-opacity:.45;stroke:var(--bad);stroke-width:2}</style></head><body><main>
+<h1>Áreas y volumen de cuerpos geométricos</h1>
+<p class="sub"><b>Matemáticas · 2.º ESO</b>. 8 bloques, 6 ejercicios en cada uno (2 de ellos para elegir la respuesta correcta y 2 con pasos dirigidos), todos con dibujo. Escribe solo el número, sin unidades ni puntos de millar (decimales con coma). Usa π = 3,14. Los números cambian cada vez que empiezas de nuevo.</p>
+<div class="name"><label for="nm">Tu nombre:</label><input id="nm" placeholder="Nombre y apellidos" autocomplete="name"><label for="cs">Curso:</label><input id="cs" placeholder="p. ej. 2.º ESO B" size="12"></div>
+<div class="name pbar"><button class="go" onclick="svOpen()">Guardar mi progreso</button><button class="go" onclick="ldOpen()">Continuar con un código</button></div><div id="av" class="avbar" aria-live="polite"><div id="ava"></div><div class="bub"><span id="avt"></span><div><button class="go" onclick="speak(PRES,this)">🔊 Escuchar la presentación</button> <label for="vz" style="font-size:14px">Voz:</label> <select id="vz" onchange="setVz(this.value)" aria-label="Elegir voz" style="font:inherit;font-size:14px;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:10px;padding:4px 8px;max-width:210px"></select></div></div></div>
+<div id="pn"></div>
+<div class="tabs" role="tablist" id="tabs"></div>
+<div id="view"></div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+const MR=Math.random.bind(Math);let rnd=MR,seed=0;const mul=a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+const R=(a,b)=>Math.floor(rnd()*(b-a+1))+a,P=a=>a[R(0,a.length-1)],f=n=>n.toLocaleString('es-ES');
+const gcd=(a,b)=>b?gcd(b,a%b):a,sh=a=>[...a].sort(()=>rnd()-.5);
+const ft=(n,d)=>d==1?''+n:`${n}/${d}`,ans=q=>q.s!=null?q.s:String(q.a);
+const dc=x=>String(+x.toFixed(6)).replace('.',',');
+const z=n=>n<0?'−'+(-n):''+n,nz=(a,b)=>{let x=0;while(!x)x=R(a,b);return x},ss=n=>n<0?' − '+(-n):' + '+n;
+const SV=(w,h,i)=>`<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Ilustración" style="max-width:${w}px;width:100%;height:auto">${i}</svg>`;
+/* ---- geometría: semejanza ---- */
+const fz=x=>Number.isInteger(x)?z(x):dc(x);
+const D=a=>Number.isInteger(a)?{a}:{a,s:dc(a),dec:1};
+const X=(t,a,hh,g,alt)=>({t,...D(a),hh,g,alt});
+const GS=(t,steps,s,hh,g,alt)=>({t,steps,a:0,s,hh,g,alt});
+const HG='Sigue el método paso a paso y apóyate en el recuadro «Recuerda». Si fallas un paso, verás la solución y podrás continuar con el siguiente.';
+const tx=(x,y,t,an,c)=>`<text class="${c||'tl'}" x="${(+x).toFixed(1)}" y="${(+y).toFixed(1)}" text-anchor="${an||'middle'}">${t}</text>`;
+const pg=p=>`<polygon class="gs" points="${p.map(a=>a[0].toFixed(1)+','+a[1].toFixed(1)).join(' ')}"/>`;
+const fg2=(a,b,c,d,l)=>{const s=Math.min(90/Math.max(a,c),85/Math.max(b,d)),H=Math.max(b,d)*s,y=12;
+const r=(x,w,h,l1,l2)=>`<rect class="gs" x="${x}" y="${(y+H-h*s).toFixed(1)}" width="${(w*s).toFixed(1)}" height="${(h*s).toFixed(1)}"/>`+tx(x+w*s/2,y+H+20,l1)+tx(x-6,y+H-h*s/2+5,l2,'end');
+return SV(300,Math.round(H+y+30),r(50,a,b,l[0],l[1])+r(50+a*s+55,c,d,l[2],l[3]))};
+const fg3=(A,B,l1,l2)=>{const g=T=>{const[a,b,c]=T,x=(a*a+c*c-b*b)/(2*a);return[a,x,Math.sqrt(c*c-x*x)]},u=g(A),v=g(B),s=Math.min(90/Math.max(u[0],v[0]),90/Math.max(u[2],v[2])),H=Math.max(u[2],v[2])*s,y=14;
+const dr=(o,G,L)=>{const[a,x,h]=G,P=[[o,y+H],[o+a*s,y+H],[o+x*s,y+H-h*s]];return pg(P)+tx(o+a*s/2,y+H+20,L[0])+tx((P[1][0]+P[2][0])/2+8,(P[1][1]+P[2][1])/2,L[1],'start')+tx((P[0][0]+P[2][0])/2-8,(P[0][1]+P[2][1])/2,L[2],'end')};
+return SV(330,Math.round(H+y+30),dr(45,u,l1)+dr(45+u[0]*s+60,v,l2))};
+const th=(x1,x2,o)=>{const t=x1/(x1+x2),A=[140,26],B=[50,150],C=[285,150],M=[A[0]+t*(B[0]-A[0]),A[1]+t*(B[1]-A[1])],N=[A[0]+t*(C[0]-A[0]),A[1]+t*(C[1]-A[1])],md=(p,q)=>[(p[0]+q[0])/2,(p[1]+q[1])/2],a=md(A,M),b=md(M,B),c=md(A,N),d=md(N,C);
+return SV(320,182,pg([A,B,C])+`<line x1="${M[0].toFixed(1)}" y1="${M[1].toFixed(1)}" x2="${N[0].toFixed(1)}" y2="${N[1].toFixed(1)}" style="stroke:var(--bad);stroke-width:3"/>`+tx(a[0]-8,a[1],o.AM||'','end')+tx(b[0]-8,b[1],o.MB||'','end')+tx(c[0]+8,c[1],o.AN||'','start')+tx(d[0]+8,d[1],o.NC||'','start')+tx((M[0]+N[0])/2,M[1]+22,o.MN||'')+tx((B[0]+C[0])/2,172,o.BC||'')+tx(A[0],16,'A',null,'tv')+tx(B[0]-6,B[1]+18,'B','end','tv')+tx(C[0]+6,C[1]+18,'C','start','tv')+tx(M[0]-8,M[1]-4,'M','end','tv')+tx(N[0]+8,N[1]-4,'N','start','tv'))};
+const tp=()=>{let x1,x2;do{x1=R(2,6);x2=R(2,6)}while(x1==x2);const k=R(2,4);return[x1,x2,x1*k,x2*k,k]};
+const pq=()=>{let p,q;do{p=R(1,4);q=R(1,4)}while(p==q);return[p,q,R(1,3),R(2,5)]};
+const TT=[[4,5,6],[5,6,7],[6,7,8],[4,6,7],[5,7,8],[3,4,5]];
+const cnt=(mk,txt,hh)=>{const k=R(1,3),L=sh([...Array(k).fill(1),...Array(4-k).fill(0)]).map(mk);return{t:txt+' '+L.map((s,i)=>'abcd'[i]+') '+s).join(' ; '),a:k,hh}};
+const TH3='Thales: si MN es paralela a BC, AM/AB = AN/AC y también AM/MB = AN/NC.';
+const pi=v=>Math.round(314*v)/100,tr=()=>{const t=P([[3,4,5],[5,12,13],[6,8,10],[8,15,17],[9,12,15]]);return R(0,1)?t:[t[1],t[0],t[2]]};
+const Tg=(x,y,t,a)=>`<text class="tg" x="${x}" y="${y}" text-anchor="${a||'middle'}">${t}</text>`;
+const Pl=(p,c)=>`<polygon class="${c||'f1'}" points="${p.map(a=>a.map(v=>+v.toFixed(1)).join(',')).join(' ')}"/>`;
+const Ln=(a,b,c)=>`<line class="${c||'hid'}" x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}"/>`;
+const Pa=(d,c)=>`<path class="${c||'f2'}" d="${d}"/>`;
+const El=(x,y,a,b,c)=>`<ellipse class="${c||'f1'}" cx="${x}" cy="${y}" rx="${a}" ry="${b}"/>`;
+const V3=i=>SV(300,190,i);
+const box=(l,k)=>{const x=45,y=55,w=120,h=85,dx=60,dy=40;let s=Ln([x,y+h],[x+dx,y+h-dy])+Ln([x+dx,y+h-dy],[x+w+dx,y+h-dy])+Ln([x+dx,y+h-dy],[x+dx,y-dy])+Pl([[x,y],[x+w,y],[x+w,y+h],[x,y+h]])+Pl([[x,y],[x+dx,y-dy],[x+w+dx,y-dy],[x+w,y]],'f2')+Pl([[x+w,y],[x+w+dx,y-dy],[x+w+dx,y+h-dy],[x+w,y+h]],'f2');
+if(k){const u=y+h-k;s+=Pl([[x,u],[x+w,u],[x+w+dx,u-dy],[x+dx,u-dy]],'sc')}
+return V3(s+Tg(x+w/2,y+h+18,l[0])+Tg(x-8,y+h/2+5,l[1],'end')+Tg(x+w+dx/2+18,y+h-dy/2+16,l[2],'start'))};
+const cyl=(r,h,s)=>V3(Pa('M90,45v95a60,20 0 0 0 120,0v-95z')+Pa('M90,140a60,20 0 0 1 120,0','hid')+El(150,45,60,20)+(s==1?Pl([[90,45],[210,45],[210,140],[90,140]],'sc'):s==2?El(150,95,60,20,'sc'):'')+Ln([150,45],[210,45],'dm')+Tg(180,38,r)+Ln([228,45],[228,140],'dm')+Tg(236,98,h,'start'));
+const cone=(r,h,g,s)=>V3(Pa('M80,145L150,25L220,145a70,22 0 0 1-140,0z')+Pa('M80,145a70,22 0 0 1 140,0','hid')+(s?Pl([[80,145],[150,25],[220,145]],'sc'):'')+Ln([150,25],[150,145],'dm')+Tg(158,92,h,'start')+Ln([150,145],[220,145],'dm')+Tg(185,140,r)+(g?Tg(100,80,g,'end'):''));
+const fru=(R,r,h,g)=>V3(Pa('M75,150L110,45a40,13 0 0 1 80,0L225,150a75,24 0 0 1-150,0z')+Pa('M75,150a75,24 0 0 1 150,0','hid')+El(150,45,40,13,'f1')+Ln([150,150],[225,150],'dm')+Tg(190,145,R)+Ln([150,45],[190,45],'dm')+Tg(170,40,r)+Ln([150,45],[150,150],'dm')+Tg(158,100,h,'start')+(g?Tg(86,100,g,'end'):''));
+const sph=(r,d)=>V3(El(150,95,70,70,'f2')+El(150,95,70,22,'hid')+(d?El(150,60,60.6,18,'sc')+Ln([150,95],[150,60],'dm')+Tg(142,82,d,'end')+Ln([150,95],[210.6,60],'dm')+Tg(192,94,r[0],'start')+Ln([150,60],[210.6,60],'dm')+Tg(183,53,r[1]):Ln([150,95],[220,95],'dm')+Tg(186,89,r)));
+const hem=r=>V3(Pa('M80,105A70,70 0 0 1 220,105A70,22 0 0 1 80,105z')+Pa('M80,105a70,22 0 0 1 140,0','hid')+Ln([150,105],[220,105],'dm')+Tg(186,99,r));
+const pyr=(l,h,ap,f)=>{const F1=[70,150],F2=[190,150],B2=[240,120],B1=[120,120],A=[155,25];let s=Ln(F1,B1)+Ln(B1,B2)+Ln(A,B1)+Pl([A,F1,F2])+Pl([A,F2,B2],'f2')+Ln(A,[155,135],'dm')+Tg(163,95,h,'start')+Ln(A,[130,150],'dm')+Tg(118,100,ap,'end')+Tg(130,172,l);
+if(f)s+=Pl([F1,F2,B2,B1].map(p=>[A[0]+f*(p[0]-A[0]),A[1]+f*(p[1]-A[1])]),'sc');return V3(s)};
+const frp=(L,l,h,ap)=>{const A=[155,-10],Q=[[70,150],[190,150],[240,120],[120,120]],T=Q.map(p=>[A[0]+(p[0]-A[0])/2,A[1]+(p[1]-A[1])/2]);
+return V3(Ln(Q[0],Q[3])+Ln(Q[3],Q[2])+Ln(Q[3],T[3])+Pl([Q[0],Q[1],T[1],T[0]])+Pl([Q[1],Q[2],T[2],T[1]],'f2')+Pl(T)+Ln([155,135],[155,62],'dm')+Tg(163,108,h,'start')+Ln([142,70],[130,150],'dm')+Tg(118,112,ap,'end')+Tg(130,172,L)+Tg(155,46,l))};
+const pTri=(a,b,c,L)=>{const A=[55,145],Bb=[165,145],C=[55,65],u=p=>[p[0]+60,p[1]-40];return V3(Ln(A,u(A))+Ln(u(A),u(Bb))+Ln(u(A),u(C))+Pl([C,Bb,u(Bb),u(C)],'f2')+Pl([A,Bb,C])+Tg(110,163,b+' cm')+Tg(47,110,a+' cm','end')+Tg(100,88,c+' cm','end')+Tg(218,140,L+' cm','start'))};
+const tet=a=>V3(Ln([60,150],[250,115])+Pl([[145,25],[60,150],[200,150]])+Pl([[145,25],[200,150],[250,115]],'f2')+Tg(130,172,a));
+const oct=a=>{const T=[150,15],U=[150,178],L=[50,95],F=[130,125],Rr=[250,95],K=[170,65];return V3(Ln(K,L)+Ln(K,Rr)+Ln(K,U)+Pl([T,L,F])+Pl([T,F,Rr],'f2')+Pl([U,L,F])+Pl([U,F,Rr],'f2')+Tg(210,138,a,'start'))};
+const fcT=(b,h)=>V3(Pl([[60,150],[240,150],[150,35]])+Ln([150,35],[150,150],'dm')+Tg(158,100,h,'start')+Tg(150,172,b));
+const fcP=(l,ap)=>{const p=[0,1,2,3,4].map(k=>[150+80*Math.cos((-90+72*k)*Math.PI/180),100+80*Math.sin((-90+72*k)*Math.PI/180)]),m=[(p[2][0]+p[3][0])/2,p[2][1]];return V3(Pl(p)+Ln([150,100],m,'dm')+Tg(158,128,ap,'start')+Tg(150,m[1]+19,l))};
+const SOL=[['tetraedro',4,4,6],['cubo',6,8,12],['octaedro',8,6,12],['dodecaedro',12,20,30],['icosaedro',20,12,30]],solF=k=>[()=>tet(''),()=>box(['a','a','a']),()=>oct(''),()=>fcP('Cara: pentágono',''),()=>fcT('Cara: triángulo','')][k]();
+const cm=v=>v+' cm';
+const B=[
+{n:'Prismas y pirámides',e:'🧱',fix:1,tip:'<b>Prisma:</b> dos bases iguales y paralelas y caras laterales rectangulares. Área lateral = perímetro de la base × altura; área total = A. lateral + 2 bases; <b>volumen = área de la base × altura</b>. <b>Pirámide:</b> una base y caras laterales triangulares que se unen en el vértice. A. lateral = perímetro de la base × apotema : 2; <b>volumen = área de la base × altura : 3</b>. La <b>apotema</b> (altura de una cara triangular) y la altura forman con la mitad del lado de la base un triángulo rectángulo: ap² = h² + (l/2)². Ejemplo: ortoedro 2×3×4 → V = 24 cm³.',T:[
+()=>{const a=R(2,6),b=R(2,6),c=R(2,6);return X(`El ortoedro de la figura mide ${a} cm de largo, ${b} cm de ancho y ${c} cm de alto. ¿Cuál es su volumen, en cm³?`,a*b*c,'Volumen del prisma = área de la base × altura = largo × ancho × alto.',box([cm(a),cm(c),cm(b)]),`Ortoedro de ${a}×${b}×${c} cm`)},
+()=>{const a=R(2,6),b=R(2,6),c=R(2,6);return X(`Calcula el área total, en cm², del ortoedro de la figura (${a} cm × ${b} cm × ${c} cm).`,2*(a*b+a*c+b*c),'Tiene tres pares de caras iguales: 2·(largo·ancho + largo·alto + ancho·alto).',box([cm(a),cm(c),cm(b)]),`Ortoedro de ${a}×${b}×${c} cm`)},
+()=>{const[p,q,r]=tr(),L=R(3,8);return GS(`La figura es un prisma recto cuya base es un triángulo rectángulo de catetos ${p} cm y ${q} cm e hipotenusa ${r} cm. La altura del prisma mide ${L} cm. Calcula su <b>área total</b> siguiendo los pasos.`,[{t:`Área de una base = cateto × cateto : 2 = ${p} × ${q} : 2. ¿Cuántos cm²?`,a:p*q/2},{t:`Área lateral = perímetro de la base × altura = ${p+q+r} × ${L}. ¿Cuántos cm²?`,a:(p+q+r)*L},{t:`Área total = área lateral + 2 bases. ¿Cuántos cm²?`,a:(p+q+r)*L+p*q}],`${(p+q+r)*L+p*q} cm²`,HG,pTri(p,q,r,L),'Prisma recto de base triangular rectángula')},
+()=>{const l=P([3,6,9]),h=R(2,9);return X(`La pirámide de la figura tiene por base un cuadrado de ${l} cm de lado y su altura mide ${h} cm. ¿Cuál es su volumen, en cm³?`,l*l*h/3,'Volumen de la pirámide = área de la base × altura : 3.',pyr(cm(l),cm(h),''),`Pirámide cuadrangular de base ${l} cm y altura ${h} cm`)},
+()=>{const l=R(4,10),ap=R(3,9);return X(`Una pirámide cuadrangular tiene base de ${l} cm de lado y apotema de ${ap} cm. ¿Cuál es su área lateral, en cm²?`,2*l*ap,'Son 4 triángulos de base l y altura la apotema: A = 4 · (l · ap : 2).',pyr(cm(l),'','ap = '+cm(ap)),`Pirámide cuadrangular, lado ${l} cm, apotema ${ap} cm`)},
+()=>{const[a,h,ap]=tr(),l=2*a;return GS(`Una pirámide cuadrangular tiene base de ${l} cm de lado y altura ${h} cm. Calcula su <b>área total</b> siguiendo los pasos.`,[{t:`La apotema cumple ap² = h² + (l/2)² = ${h}² + ${a}². ¿Cuánto mide la apotema, en cm?`,a:ap},{t:`Área lateral = 2 · l · ap = 2 · ${l} · ${ap}. ¿Cuántos cm²?`,a:2*l*ap},{t:`Área total = área lateral + área de la base (${l}²). ¿Cuántos cm²?`,a:2*l*ap+l*l}],`${2*l*ap+l*l} cm²`,HG,pyr(cm(l),cm(h),'ap = ?'),'Pirámide cuadrangular; se pide el área total')}]},
+{n:'Troncos de pirámide',e:'🏺',fix:1,tip:'Un <b>tronco de pirámide</b> es lo que queda al cortar una pirámide con un plano paralelo a la base. Tiene dos bases (la mayor B y la menor b) y caras laterales trapecios. Con bases cuadradas de lados L y l: <b>A. lateral = (P + p) · ap : 2 = 2·(L + l)·ap</b>; A. total = A. lateral + L² + l²; <b>volumen = h/3 · (L² + l² + L·l)</b>. La apotema se calcula con el triángulo rectángulo de catetos h y (L − l)/2. Ejemplo: L = 6, l = 2, h = 3 → V = 1 · (36 + 4 + 12) = 52 cm³.',T:[
+()=>{const l=R(2,4),L=l+R(2,5),ap=R(3,8);return X(`Un tronco de pirámide cuadrangular tiene bases de ${L} cm y ${l} cm de lado, y su apotema mide ${ap} cm. ¿Cuál es su área lateral, en cm²?`,2*(L+l)*ap,'A. lateral = (perímetro mayor + perímetro menor) · apotema : 2.',frp(cm(L),cm(l),'h','ap = '+cm(ap)),`Tronco de pirámide, bases ${L} y ${l} cm, apotema ${ap} cm`)},
+()=>{const l=R(2,4),L=l+R(2,5);return X(`Las bases de un tronco de pirámide cuadrangular son cuadrados de ${L} cm y ${l} cm de lado. ¿Cuál es la suma de las áreas de sus dos bases, en cm²?`,L*L+l*l,'Calcula el área de cada cuadrado (lado²) y suma.',frp(cm(L),cm(l),'h','ap'),`Tronco de pirámide, bases ${L} y ${l} cm`)},
+()=>{const l=R(2,4),L=l+R(2,5),ap=R(3,8);return GS(`Calcula el <b>área total</b> de un tronco de pirámide cuadrangular de bases ${L} cm y ${l} cm de lado y apotema ${ap} cm, siguiendo los pasos.`,[{t:`Área lateral = 2 · (${L} + ${l}) · ${ap}. ¿Cuántos cm²?`,a:2*(L+l)*ap},{t:`Suma de las áreas de las bases = ${L}² + ${l}². ¿Cuántos cm²?`,a:L*L+l*l},{t:`Área total = área lateral + bases. ¿Cuántos cm²?`,a:2*(L+l)*ap+L*L+l*l}],`${2*(L+l)*ap+L*L+l*l} cm²`,HG,frp(cm(L),cm(l),'h','ap = '+cm(ap)),'Tronco de pirámide; área total')},
+()=>{const l=R(2,4),L=l+R(2,6),h=P([3,6,9]);return X(`Calcula el volumen, en cm³, de un tronco de pirámide cuadrangular de bases ${L} cm y ${l} cm de lado y altura ${h} cm.`,h/3*(L*L+l*l+L*l),'V = h/3 · (L² + l² + L·l).',frp(cm(L),cm(l),'h = '+cm(h),'ap'),`Tronco de pirámide, bases ${L} y ${l} cm, altura ${h} cm`)},
+()=>{const[a,h,ap]=tr(),l=R(2,4),L=l+2*a;return X(`Un tronco de pirámide cuadrangular tiene bases de ${L} cm y ${l} cm de lado y altura ${h} cm. ¿Cuánto mide su apotema, en cm?`,ap,'La apotema es la hipotenusa de un triángulo de catetos h y (L − l) : 2.',frp(cm(L),cm(l),'h = '+cm(h),'ap = ?'),`Tronco de pirámide, L=${L}, l=${l}, h=${h}`)},
+()=>{const l=R(2,4),L=l+R(2,5),h=P([3,6,9]),S=L*L+l*l+L*l;return GS(`Calcula el <b>volumen</b> de un tronco de pirámide cuadrangular de bases ${L} cm y ${l} cm y altura ${h} cm siguiendo los pasos.`,[{t:`Calcula L · l = ${L} · ${l}. ¿Cuánto vale?`,a:L*l},{t:`Calcula L² + l² + L·l. ¿Cuánto vale?`,a:S},{t:`V = h/3 · ${S} = ${h/3} · ${S}. ¿Cuántos cm³?`,a:h/3*S}],`${h/3*S} cm³`,HG,frp(cm(L),cm(l),'h = '+cm(h),'ap'),'Tronco de pirámide; volumen')}]},
+{n:'Poliedros regulares',e:'🎲',fix:1,tip:'Un <b>poliedro regular</b> tiene todas sus caras polígonos regulares iguales. Solo hay cinco: <b>tetraedro</b> (4 caras triangulares), <b>cubo</b> (6 cuadrados), <b>octaedro</b> (8 triángulos), <b>dodecaedro</b> (12 pentágonos) e <b>icosaedro</b> (20 triángulos). <b>Fórmula de Euler:</b> caras + vértices = aristas + 2 (C + V = A + 2). Su área total es nº de caras × área de una cara. Cada arista une dos caras, por eso A = (caras × lados de cada cara) : 2. Cubo de arista a: A = 6a², V = a³.',T:[
+()=>{const k=R(0,4),[n,C,V,A]=SOL[k];return X(`El ${n} tiene ${C} caras y ${V} vértices. Aplicando la fórmula de Euler, ¿cuántas aristas tiene?`,A,'C + V = A + 2, así que A = C + V − 2.',solF(k),'Poliedro regular: '+n)},
+()=>{const a=R(2,9);return X(`¿Cuál es el área total, en cm², de un cubo de ${a} cm de arista?`,6*a*a,'El cubo tiene 6 caras cuadradas iguales de lado a.',box([cm(a),cm(a),cm(a)]),`Cubo de arista ${a} cm`)},
+()=>{const b=R(2,6)*2,h=R(2,9);return GS(`Cada cara de un icosaedro es un triángulo de ${b} cm de base y ${h} cm de altura. Calcula el <b>área total</b> del icosaedro siguiendo los pasos.`,[{t:`Área de una cara = base × altura : 2 = ${b} × ${h} : 2. ¿Cuántos cm²?`,a:b*h/2},{t:`¿Cuántas caras tiene un icosaedro?`,a:20},{t:`Área total = ${b*h/2} × 20. ¿Cuántos cm²?`,a:b*h*10}],`${b*h*10} cm²`,HG,fcT(cm(b),cm(h)),'Cara triangular del icosaedro')},
+()=>{const l=R(1,3)*2,ap=R(2,5);return X(`Cada cara de un dodecaedro es un pentágono regular de ${l} cm de lado y ${ap} cm de apotema. ¿Cuál es el área total del dodecaedro, en cm²?`,30*l*ap,'Área del pentágono = perímetro × apotema : 2 = 5·l·ap : 2. El dodecaedro tiene 12 caras.',fcP(cm(l),'ap = '+cm(ap)),'Cara pentagonal del dodecaedro')},
+()=>{const a=R(2,9);return X(`¿Cuánto mide, en cm, la suma de las longitudes de todas las aristas de un cubo de ${a} cm de arista?`,12*a,'Un cubo tiene 12 aristas, todas de igual longitud.',box(['a = '+cm(a),'a','a']),`Cubo de arista ${a} cm`)},
+()=>GS('Un icosaedro tiene 20 caras que son triángulos. Calcula su número de <b>vértices</b> siguiendo los pasos.',[{t:'20 caras triangulares tienen 20 × 3 lados en total. ¿Cuántos lados son?',a:60},{t:'Cada arista une dos caras, así que A = 60 : 2. ¿Cuántas aristas tiene?',a:30},{t:'Euler: C + V = A + 2, luego V = A − C + 2 = 30 − 20 + 2. ¿Cuántos vértices?',a:12}],'12 vértices',HG,solF(4),'Icosaedro: cara triangular')]},
+{n:'Secciones planas',e:'🔪',fix:1,tip:'Una <b>sección plana</b> es la figura que resulta al cortar un cuerpo con un plano. En un <b>prisma</b>, un corte paralelo a la base da un polígono igual a la base. En una <b>pirámide</b> o un <b>cono</b>, un corte paralelo a la base da una figura semejante a ella: si el plano está a una distancia t del vértice y la altura es h, la razón de semejanza es t/h. En un <b>cilindro</b>, un corte por el eje es un rectángulo (2r × h) y uno paralelo a la base es un círculo. En un <b>cono</b>, un corte por el eje es un triángulo isósceles. En una <b>esfera</b>, toda sección es un círculo; a distancia d del centro: r² = R² − d².',T:[
+()=>{const a=R(3,9);return X(`Un cubo de ${a} cm de arista se corta con un plano paralelo a una de sus caras (zona roja). ¿Cuál es el área de la sección, en cm²?`,a*a,'La sección es igual a la cara: un cuadrado de lado a.',box([cm(a),cm(a),cm(a)],42),`Cubo de arista ${a} cm cortado por un plano paralelo a una cara`)},
+()=>{const a=R(3,8),b=R(2,7),c=R(2,7);return X(`Un ortoedro de ${a} cm de largo, ${b} cm de ancho y ${c} cm de alto se corta con un plano paralelo a la base (zona roja). ¿Cuál es el área de la sección, en cm²?`,a*b,'Un corte paralelo a la base da un rectángulo igual a la base: largo × ancho.',box([cm(a),cm(c),cm(b)],42),`Ortoedro ${a}×${b}×${c} cm cortado paralelamente a la base`)},
+()=>{const[d,r,Rr]=tr();return GS(`Una esfera de radio ${Rr} cm se corta con un plano a ${d} cm de su centro. Calcula el <b>área de la sección</b> (usa π = 3,14) siguiendo los pasos.`,[{t:`r² = R² − d² = ${Rr}² − ${d}². ¿Cuánto vale r²?`,a:r*r},{t:`¿Cuánto mide el radio r de la sección, en cm?`,a:r},{t:`Área del círculo = 3,14 · r². ¿Cuántos cm²?`,a:pi(r*r)}],`${dc(pi(r*r))} cm²`,HG,sph(['R = '+cm(Rr),'r = ?'],'d = '+cm(d)),'Esfera cortada por un plano a distancia d del centro')},
+()=>{const[r,h]=[R(2,7),R(3,9)];return X(`Un cono de ${r} cm de radio y ${h} cm de altura se corta con un plano que pasa por su eje. La sección es el triángulo rojo. ¿Cuál es su área, en cm²?`,r*h,'Es un triángulo de base 2r y altura h: A = 2r · h : 2.',cone('r = '+cm(r),'h = '+cm(h),'',1),`Cono de radio ${r} y altura ${h} cm; sección por el eje`)},
+()=>{const r=R(2,6),h=R(3,9);return X(`Un cilindro de ${r} cm de radio y ${h} cm de altura se corta con un plano que pasa por su eje (rectángulo rojo). ¿Cuál es el área de la sección, en cm²?`,2*r*h,'La sección es un rectángulo de base el diámetro (2r) y altura h.',cyl('r = '+cm(r),'h = '+cm(h),1),`Cilindro de radio ${r} y altura ${h} cm; sección por el eje`)},
+()=>{const n=P([2,4,5]),m=R(1,n-1),q=R(1,3),s=R(1,3),l=n*q,H=n*s,t=m*s;return GS(`Una pirámide cuadrangular de ${l} cm de lado en la base y ${H} cm de altura se corta con un plano paralelo a la base, a ${t} cm del vértice. Calcula el <b>área de la sección</b> siguiendo los pasos. (Decimales con coma.)`,[{t:`Razón de semejanza = t : H = ${t} : ${H}. ¿Cuánto vale?`,a:m/n},{t:`Lado de la sección = ${l} × razón. ¿Cuántos cm?`,a:m*q},{t:`Área de la sección = lado². ¿Cuántos cm²?`,a:m*q*m*q}],`${m*q*m*q} cm²`,HG,pyr(cm(l),cm(H),'',m/n),'Pirámide cortada por un plano paralelo a la base')}]},
+{n:'Cilindro y cono',e:'🥫',fix:1,tip:'Usa π ≈ 3,14. <b>Cilindro</b> (radio r, altura h): A. lateral = 2πrh; A. total = 2πrh + 2πr² = 2πr(h + r); <b>V = πr²h</b>. <b>Cono</b> (radio r, altura h, generatriz g): g² = h² + r²; A. lateral = πrg; A. total = πrg + πr² = πr(g + r); <b>V = πr²h : 3</b>. La generatriz es el segmento que une el vértice con un punto de la circunferencia de la base. Ejemplo: cilindro r = 2, h = 5 → V = 3,14 · 4 · 5 = 62,8 cm³.',T:[
+()=>{const r=R(2,6),h=R(3,10);return X(`Un cilindro tiene ${r} cm de radio y ${h} cm de altura. ¿Cuál es su área lateral, en cm²? (π = 3,14.)`,pi(2*r*h),'El área lateral es un rectángulo de base 2πr y altura h.',cyl('r = '+cm(r),'h = '+cm(h)),`Cilindro r=${r}, h=${h} cm`)},
+()=>{const r=R(2,6),h=R(3,10);return X(`Calcula el volumen, en cm³, de un cilindro de ${r} cm de radio y ${h} cm de altura. (π = 3,14.)`,pi(r*r*h),'V = área de la base × altura = π · r² · h.',cyl('r = '+cm(r),'h = '+cm(h)),`Cilindro r=${r}, h=${h} cm`)},
+()=>{const r=R(2,5),h=R(3,9);return GS(`Calcula el <b>área total</b> de un cilindro de ${r} cm de radio y ${h} cm de altura (π = 3,14) siguiendo los pasos.`,[{t:`Área lateral = 2 · 3,14 · ${r} · ${h}. ¿Cuántos cm²?`,a:pi(2*r*h)},{t:`Área de las dos bases = 2 · 3,14 · ${r}². ¿Cuántos cm²?`,a:pi(2*r*r)},{t:`Área total = lateral + bases. ¿Cuántos cm²?`,a:pi(2*r*h+2*r*r)}],`${dc(pi(2*r*h+2*r*r))} cm²`,HG,cyl('r = '+cm(r),'h = '+cm(h)),'Cilindro; área total')},
+()=>{const[r,h,g]=tr();return X(`Un cono tiene ${r} cm de radio de la base, ${h} cm de altura y ${g} cm de generatriz. ¿Cuál es su área lateral, en cm²? (π = 3,14.)`,pi(r*g),'A. lateral = π · r · g (usa la generatriz, no la altura).',cone('r = '+cm(r),'h = '+cm(h),'g = '+cm(g)),`Cono r=${r}, h=${h}, g=${g} cm`)},
+()=>{const[r,h]=tr();return X(`Calcula el volumen, en cm³, de un cono de ${r} cm de radio y ${h} cm de altura. (π = 3,14.)`,pi(r*r*h/3),'V = π · r² · h : 3, un tercio del cilindro con la misma base y altura.',cone('r = '+cm(r),'h = '+cm(h),''),`Cono r=${r}, h=${h} cm`)},
+()=>{const[r,h,g]=tr();return GS(`Un cono tiene ${r} cm de radio y ${h} cm de altura. Calcula su <b>área total</b> (π = 3,14) siguiendo los pasos.`,[{t:`Generatriz: g² = h² + r² = ${h}² + ${r}². ¿Cuánto mide g, en cm?`,a:g},{t:`Área lateral = 3,14 · ${r} · ${g}. ¿Cuántos cm²?`,a:pi(r*g)},{t:`Área total = lateral + 3,14 · ${r}². ¿Cuántos cm²?`,a:pi(r*g+r*r)}],`${dc(pi(r*g+r*r))} cm²`,HG,cone('r = '+cm(r),'h = '+cm(h),'g = ?'),'Cono; área total')}]},
+{n:'Tronco de cono',e:'🥤',fix:1,tip:'Un <b>tronco de cono</b> resulta de cortar un cono con un plano paralelo a la base. Tiene dos bases circulares (radios R y r), una altura h y una generatriz g, con <b>g² = h² + (R − r)²</b>. Usa π ≈ 3,14. <b>A. lateral = π · (R + r) · g</b>; A. total = A. lateral + πR² + πr²; <b>volumen = π · h/3 · (R² + r² + R·r)</b>. Ejemplo: R = 3, r = 1, h = 3 → V = 3,14 · 1 · (9 + 1 + 3) = 40,82 cm³.',T:[
+()=>{const r=R(2,4),Rr=r+R(2,4),g=R(4,9);return X(`Un tronco de cono tiene radios de ${Rr} cm y ${r} cm, y su generatriz mide ${g} cm. ¿Cuál es su área lateral, en cm²? (π = 3,14.)`,pi((Rr+r)*g),'A. lateral = π · (R + r) · g.',fru('R = '+cm(Rr),'r = '+cm(r),'h','g = '+cm(g)),`Tronco de cono R=${Rr}, r=${r}, g=${g} cm`)},
+()=>{const r=R(2,4),Rr=r+R(2,4);return X(`Las bases de un tronco de cono son círculos de ${Rr} cm y ${r} cm de radio. ¿Cuál es la suma de sus áreas, en cm²? (π = 3,14.)`,pi(Rr*Rr+r*r),'Área de cada base = π · radio². Suma las dos.',fru('R = '+cm(Rr),'r = '+cm(r),'h','g'),`Tronco de cono R=${Rr}, r=${r} cm`)},
+()=>{const[a,h,g]=tr(),r=R(2,5),Rr=r+a;return GS(`Un tronco de cono tiene radios de ${Rr} cm y ${r} cm y altura ${h} cm. Calcula su <b>área total</b> (π = 3,14) siguiendo los pasos.`,[{t:`g² = h² + (R − r)² = ${h}² + ${a}². ¿Cuánto mide la generatriz, en cm?`,a:g},{t:`Área lateral = 3,14 · (${Rr} + ${r}) · ${g}. ¿Cuántos cm²?`,a:pi((Rr+r)*g)},{t:`Área total = lateral + 3,14 · (${Rr}² + ${r}²). ¿Cuántos cm²?`,a:pi((Rr+r)*g+Rr*Rr+r*r)}],`${dc(pi((Rr+r)*g+Rr*Rr+r*r))} cm²`,HG,fru('R = '+cm(Rr),'r = '+cm(r),'h = '+cm(h),'g = ?'),'Tronco de cono; área total')},
+()=>{const r=R(1,3),Rr=r+R(1,3),h=P([3,6]);return X(`Calcula el volumen, en cm³, de un tronco de cono de radios ${Rr} cm y ${r} cm y altura ${h} cm. (π = 3,14.)`,pi(h/3*(Rr*Rr+r*r+Rr*r)),'V = π · h/3 · (R² + r² + R·r).',fru('R = '+cm(Rr),'r = '+cm(r),'h = '+cm(h),''),`Tronco de cono R=${Rr}, r=${r}, h=${h} cm`)},
+()=>{const[a,h,g]=tr(),r=R(2,5),Rr=r+a;return X(`Un tronco de cono tiene radios de ${Rr} cm y ${r} cm y altura ${h} cm. ¿Cuánto mide su generatriz, en cm?`,g,'Forma un triángulo rectángulo con la altura h y la diferencia de radios R − r.',fru('R = '+cm(Rr),'r = '+cm(r),'h = '+cm(h),'g = ?'),`Tronco de cono R=${Rr}, r=${r}, h=${h} cm`)},
+()=>{const r=R(1,3),Rr=r+R(1,3),h=P([3,6,9]),S=Rr*Rr+r*r+Rr*r;return GS(`Calcula el <b>volumen</b> de un tronco de cono de radios ${Rr} cm y ${r} cm y altura ${h} cm (π = 3,14) siguiendo los pasos.`,[{t:`Calcula R² + r² + R·r = ${Rr}² + ${r}² + ${Rr}·${r}. ¿Cuánto vale?`,a:S},{t:`Multiplica por h/3 = ${h/3}. ¿Cuánto vale ${h/3} · ${S}?`,a:h/3*S},{t:`Multiplica por π = 3,14. ¿Cuántos cm³?`,a:pi(h/3*S)}],`${dc(pi(h/3*S))} cm³`,HG,fru('R = '+cm(Rr),'r = '+cm(r),'h = '+cm(h),''),'Tronco de cono; volumen')}]},
+{n:'Esfera',e:'⚽',fix:1,tip:'Usa π ≈ 3,14. <b>Esfera</b> de radio r: <b>área = 4πr²</b> y <b>volumen = 4/3 · π · r³</b>. Una <b>semiesfera</b> (hemisferio) tiene la mitad del volumen: <b>2/3 · π · r³</b>; su superficie son 2πr² de la parte curva y πr² del círculo de la base: A. total = 3πr². El diámetro es el doble del radio. Ejemplo: r = 3 → A = 4 · 3,14 · 9 = 113,04 cm² y V = 4/3 · 3,14 · 27 = 113,04 cm³.',T:[
+()=>{const r=R(2,8);return X(`¿Cuál es el área de una esfera de ${r} cm de radio, en cm²? (π = 3,14.)`,pi(4*r*r),'A = 4 · π · r².',sph('r = '+cm(r)),`Esfera de radio ${r} cm`)},
+()=>{const r=P([3,6]);return X(`Calcula el volumen, en cm³, de una esfera de ${r} cm de radio. (π = 3,14.)`,pi(4*r**3/3),'V = 4/3 · π · r³. Calcula primero r³ y divide entre 3.',sph('r = '+cm(r)),`Esfera de radio ${r} cm`)},
+()=>{const r=R(2,8);return GS(`Una semiesfera tiene ${r} cm de radio. Calcula su <b>área total</b> (incluida la base circular), con π = 3,14, siguiendo los pasos.`,[{t:`Parte curva = mitad del área de la esfera = 2 · 3,14 · ${r}². ¿Cuántos cm²?`,a:pi(2*r*r)},{t:`Círculo de la base = 3,14 · ${r}². ¿Cuántos cm²?`,a:pi(r*r)},{t:`Área total = parte curva + base. ¿Cuántos cm²?`,a:pi(3*r*r)}],`${dc(pi(3*r*r))} cm²`,HG,hem('r = '+cm(r)),'Semiesfera; área total')},
+()=>{const r=R(2,8);return X(`Un balón esférico tiene ${2*r} cm de diámetro. ¿Cuál es su superficie, en cm²? (π = 3,14.)`,pi(4*r*r),'El radio es la mitad del diámetro. Después A = 4πr².',sph('d = '+cm(2*r)),`Esfera de diámetro ${2*r} cm`)},
+()=>{const r=P([3,6]);return X(`Calcula el volumen, en cm³, de una semiesfera de ${r} cm de radio. (π = 3,14.)`,pi(2*r**3/3),'V = mitad del volumen de la esfera = 2/3 · π · r³.',hem('r = '+cm(r)),`Semiesfera de radio ${r} cm`)},
+()=>{const a=P([6,12]),r=a/2;return GS(`Una esfera está inscrita en un cubo de ${a} cm de arista (toca las seis caras). Calcula su <b>volumen</b> (π = 3,14) siguiendo los pasos.`,[{t:`El diámetro de la esfera es igual a la arista del cubo. ¿Cuánto mide su radio, en cm?`,a:r},{t:`Área de la esfera = 4 · 3,14 · ${r}². ¿Cuántos cm²?`,a:pi(4*r*r)},{t:`Volumen = 4/3 · 3,14 · ${r}³. ¿Cuántos cm³?`,a:pi(4*r**3/3)}],`${dc(pi(4*r**3/3))} cm³`,HG,sph('r = ?'),'Esfera inscrita en un cubo')}]},
+{n:'Problemas de aplicación',e:'🏗️',fix:1,tip:'Para resolver un problema de cuerpos geométricos: 1) lee y haz un <b>dibujo</b> con los datos; 2) identifica el cuerpo y si te piden <b>área</b> (cuántos m² de pintura, tela o chapa) o <b>volumen</b> (cuánto cabe); 3) escribe la fórmula y calcula, con ayuda de Pitágoras si falta la altura, la apotema o la generatriz; 4) pasa a las unidades pedidas. Equivalencias: <b>1 dm³ = 1 litro</b>, 1 m³ = 1 000 litros, 1 cm³ = 1 mililitro. 5) Comprueba que el resultado tiene sentido. Usa π ≈ 3,14.',T:[
+()=>{const r=R(2,5),h=R(4,12);return X(`Un depósito cilíndrico tiene ${r} dm de radio y ${h} dm de altura. ¿Cuántos litros de agua caben? (1 dm³ = 1 litro; π = 3,14.)`,pi(r*r*h),'Calcula el volumen en dm³ y recuerda que 1 dm³ es 1 litro.',cyl('r = '+r+' dm','h = '+h+' dm'),`Depósito cilíndrico r=${r} dm, h=${h} dm`)},
+()=>{const a=R(5,10),b=R(3,5),c=R(1,2);return X(`Una piscina con forma de ortoedro mide ${a} m de largo, ${b} m de ancho y ${c} m de profundidad. ¿Cuántos litros de agua caben? (1 m³ = 1000 litros; escribe el número sin puntos.)`,a*b*c*1000,'Calcula el volumen en m³ y multiplica por 1000.',box([a+' m',c+' m',b+' m']),`Piscina ${a}×${b}×${c} m`)},
+()=>{const r=R(3,6),h=R(8,14);return GS(`Una lata de conserva cilíndrica mide ${r} cm de radio y ${h} cm de altura. Calcula la <b>chapa</b> necesaria para fabricarla (π = 3,14) siguiendo los pasos.`,[{t:`Etiqueta lateral = 2 · 3,14 · ${r} · ${h}. ¿Cuántos cm²?`,a:pi(2*r*h)},{t:`Tapa y fondo = 2 · 3,14 · ${r}². ¿Cuántos cm²?`,a:pi(2*r*r)},{t:`Chapa total. ¿Cuántos cm²?`,a:pi(2*r*h+2*r*r)}],`${dc(pi(2*r*h+2*r*r))} cm²`,HG,cyl('r = '+cm(r),'h = '+cm(h)),'Lata cilíndrica; superficie total')},
+()=>{const r=R(3,8),c=P([5,10,20]);return X(`Una cúpula con forma de semiesfera tiene ${r} m de radio. Pintar la superficie curva cuesta ${c} € por m². ¿Cuántos euros cuesta pintarla? (π = 3,14.)`,pi(2*r*r)*c,'La superficie curva de una semiesfera es 2πr². Multiplica por el precio del m².',hem('r = '+r+' m'),`Cúpula semiesférica de ${r} m de radio`)},
+()=>{const r=P([3,6]),h=R(4,12);return X(`Un cucurucho con forma de cono mide ${r} cm de radio y ${h} cm de altura. ¿Cuántos mililitros de helado caben dentro? (1 cm³ = 1 ml; π = 3,14.)`,pi(r*r*h/3),'Volumen del cono = π · r² · h : 3 (en cm³).',cone('r = '+cm(r),'h = '+cm(h),''),`Cucurucho cónico r=${r}, h=${h} cm`)},
+()=>{const l=P([3,6,9]),h=R(2,8),V=l*l*h/3;return GS(`Un recipiente de vidrio con forma de pirámide cuadrangular mide ${l} m de lado en la base y ${h} m de altura. Calcula cuántos <b>litros</b> de agua caben (1 m³ = 1000 litros) siguiendo los pasos.`,[{t:`Área de la base = ${l}². ¿Cuántos m²?`,a:l*l},{t:`Volumen = área de la base × altura : 3. ¿Cuántos m³?`,a:V},{t:`Pasa los m³ a litros. ¿Cuántos litros?`,a:V*1000}],`${V*1000} litros`,HG,pyr(l+' m',h+' m',''),'Pirámide cuadrangular; capacidad en litros')}]}
+];
+const mkO=q=>{if(q.o)return sh(q.o);const a=q.a;let c;
+if(q.fr){const[n,d]=q.fr;c=[[n+1,d],[n,d+1],[n+1,d+1],[d,n],[n-1,d],[n,d-1],[n+2,d],[n,d+2],[2*n,d]].filter(([x,y])=>x>=1&&y>=1&&Math.abs(x/y-a)>1e-9).map(([x,y])=>ft(x,y))}
+else if(q.dec){const u=Math.pow(10,-((String(q.s).split(',')[1]||'').length));c=[a+u,a-u,a+10*u,a-10*u,a*10,a/10,a*100,a/100,a+1,a-1,a+2*u,a+100*u].filter(v=>v>=0&&Math.abs(v-a)>1e-9).map(dc)}
+else c=[-a,a+1,a-1,a+2,a-2,a+10,a-10,a+3,a+5,a+100,a+7].filter(v=>v!=a&&(a<0||v>=0)).map(String);
+return sh([ans(q),...sh([...new Set(c)]).slice(0,3)])};
+const O=(q,i)=>`<div class="opts" role="radiogroup" aria-label="Opciones ${i+1}">`+q.o.map(v=>`<label><input type="radio" name="o${i}" value="${v}" ${q.pts!==null||q.bad.includes(v)?'disabled':''}${q.pts!==null&&q.pts>0&&v==ans(q)?' checked':''}>${v}</label>`).join('')+'</div>';
+const G=(q,i)=>{let h='<div class="gd">';const done=q.pts!==null,nd=q.sres.length;
+q.steps.forEach((s,k)=>{if(k<nd){const r=q.sres[k];h+=`<div class="stp ${r.ok?'okk':'kos'}"><b>Paso ${k+1}.</b> ${s.t}<div class="msg ${r.ok?'good':'wrong'}">${r.ok?'✔ Tu respuesta: '+r.a+' (+'+f2(+r.p.toFixed(3))+')':'✘ Tu respuesta: '+r.a+'. La solución era '+fz(s.a)}</div></div>`}
+else if(k==nd&&!done){h+=`<div class="stp cur"><b>Paso ${k+1}.</b> ${s.t}<div class="q2"><input id="g${i}" inputmode="text" autocomplete="off" aria-label="Respuesta del paso ${k+1}" onkeydown="if(event.key=='Enter')chk(${i})"><button class="go" onclick="chk(${i})">Comprobar paso</button><span class="msg wrong">${q.msg}</span></div></div>`}});
+if(done)h+=`<div class="msg ${q.pts>0?'good':'wrong'}">${q.msg}</div>`;return h+'</div>'};
+let St,cur=0,mode=null,lc=0;
+function gen0(sd){seed=sd;rnd=mul(sd);St=B.map(b=>(b.fix?b.T:sh(b.T)).slice(0,6).map(fn=>fn()).map((q,i)=>({...q,tries:0,pts:null,msg:'',bad:[],o:!q.steps&&[1,4].includes(i)?mkO(q):null,...(q.steps?{st:0,sp:0,log:[],sres:[]}:{})})));
+}
+function gen(sd){gen0(sd);St.forEach(b=>b.forEach(q=>{q.h=q.hh||hintFor(q.t);q.hu=0}))}
+function start(){AV=newAv();gen((MR()*4294967296)>>>0);cur=0;mode=null;draw();say(PRES,'cheer')}
+function draw(){theme(cur>=B.length?8:cur);if(cur<B.length)lastCur=cur;
+document.getElementById('tabs').innerHTML=B.map((b,i)=>`<button style="--hi:${TH[i].h}" class="tab${St[i].every(q=>q.pts!==null)?' done':''}" role="tab" aria-selected="${cur==i}" onclick="cur=${i};draw()">${b.e} ${b.n}</button>`).join('')+`<button style="--hi:${TH[8].h}" class="tab" role="tab" aria-selected="${cur==B.length}" onclick="cur=B.length;draw()">🏆 Mi nota</button>`;
+const v=document.getElementById('view');
+if(cur==B.length)return report(v);
+const b=B[cur];
+v.innerHTML=`<div class="ban"><span>${b.e}</span><div><small>Bloque ${cur+1} de ${B.length}</small>${b.n}</div></div><details open><summary>💡 Recuerda</summary><p>${b.tip}</p></details>`+St[cur].map((q,i)=>`<div class="card"><div class="q"><div class="t"><b>${i+1}.</b> ${q.t}</div>${q.g?`<div class="gr">${q.g}</div>`:''}
+${q.steps?G(q,i):`${q.o?O(q,i):`<input id="i${i}" inputmode="text" autocomplete="off" aria-label="Respuesta ${i+1}" ${q.pts!==null?'disabled':''} onkeydown="if(event.key=='Enter')chk(${i})">`}<button class="go" onclick="chk(${i})" ${q.pts!==null?'disabled':''}>Comprobar</button><span class="msg ${q.pts===null?'wrong':'good'}">${q.msg}</span>`}${hb(q,i)}</div></div>`).join('')+
+`<div class="nav"><button class="go" ${cur==0?'disabled':''} onclick="cur--;draw()">Anterior</button><button class="go" onclick="cur++;draw()">${cur==B.length-1?'Ver mi nota':'Siguiente'}</button></div>`}
+const pa=r=>{r=String(r).replace(/[−–]/g,'-').replace(/\s+/g,'').replace(',','.');if(/^-?\d+\/-?\d+$/.test(r)){const[n,d]=r.split('/').map(Number);return d?n/d:NaN}return/^-?\d*\.?\d+$/.test(r)?+r:NaN};
+function focusNext(i){for(let k=i+1;k<6;k++){const e=document.getElementById('i'+k)||document.getElementById('g'+k);if(e&&!e.disabled){e.focus();break}}}
+function stepApply(q,raw){const k=q.sres.length,s=q.steps[k],n=q.steps.length,v=pa(raw);q.log.push(raw);q.st++;
+if(Math.abs(v-s.a)<1e-9){const p=(q.st==1?1:.5)/n;q.sp+=p;q.sres.push({a:raw,ok:1,p});q.st=0;q.msg=''}
+else if(q.st==1)q.msg='Casi. Revisa el paso e inténtalo otra vez.';
+else{q.sres.push({a:raw,ok:0,p:0});q.st=0;q.msg=''}
+if(q.sres.length>=n){q.tries=q.sp>.999?1:2;q.ans=q.sres.map(r=>r.a).join(' · ');q.pts=pen(q.sp,q);q.msg=q.pts>0?(q.sp>.999?'¡Perfecto! ':'¡Ejercicio completado! ')+'+'+f2(q.pts)+(q.hu?' (pista: −0,25)':''):'Repasa el método con los pasos resueltos.'}}
+function chkS(q,i){const e=document.getElementById('g'+i),raw=e?e.value.trim():'';if(raw==='')return;if(isNaN(pa(raw))){q.msg='Escribe un número, por ejemplo 2 o −3.';draw();return}
+stepApply(q,raw);draw();const e2=document.getElementById('g'+i);if(e2)e2.focus();else focusNext(i)}
+function chk(i){const q=St[cur][i];if(q.pts!==null)return;if(q.steps)return chkS(q,i);const raw=q.o?((document.querySelector('input[name=o'+i+']:checked')||{}).value||''):document.getElementById('i'+i).value.trim();
+if(raw==='')return;const v=pa(raw);if(isNaN(v)){q.msg='Escribe un número, por ejemplo 2,35 (sin puntos de millar).';draw();return}
+const ok=q.red?raw.replace(/\s/g,'')===q.s:Math.abs(v-q.a)<1e-9;q.tries++;q.ans=raw;if(q.o&&!ok)q.bad.push(raw);
+if(ok){q.pts=pen(q.tries==1?1:.5,q);q.msg=okm(q)}
+else if(q.tries==1)q.msg='Casi. Repasa el recuadro "Recuerda" e inténtalo otra vez.';
+else{q.pts=0;q.msg='La solución era '+ans(q)+'. ¡Fíjate cómo se hace!'}
+draw();if(q.pts===null){const e=document.getElementById('i'+i);e&&e.focus()}else focusNext(i)}
+const C=[{s:'C. Sentido espacial: prismas y pirámides; áreas lateral y total; volumen; apotema',c:['MAT.2.1.1','MAT.2.1.3','MAT.2.5.2','MAT.2.7.1','MAT.2.8.2']},
+{s:'C. Sentido espacial y B. Sentido de la medida: troncos de pirámide; áreas y volumen',c:['MAT.2.1.1','MAT.2.1.2','MAT.2.4.1','MAT.2.5.2','MAT.2.7.2']},
+{s:'C. Sentido espacial: poliedros regulares; caras, vértices y aristas; fórmula de Euler',c:['MAT.2.3.1','MAT.2.4.1','MAT.2.5.1','MAT.2.8.1','MAT.2.8.2']},
+{s:'C. Sentido espacial: secciones planas de cuerpos geométricos; figuras semejantes en las secciones',c:['MAT.2.2.1','MAT.2.3.1','MAT.2.7.1','MAT.2.7.2','MAT.2.8.2']},
+{s:'B. Sentido de la medida: cilindro y cono; áreas y volumen; generatriz',c:['MAT.2.1.1','MAT.2.1.3','MAT.2.5.2','MAT.2.7.1','MAT.2.8.2']},
+{s:'B. Sentido de la medida: tronco de cono; generatriz, áreas y volumen',c:['MAT.2.1.2','MAT.2.1.3','MAT.2.4.1','MAT.2.5.2','MAT.2.7.2']},
+{s:'B. Sentido de la medida: esfera y semiesfera; área y volumen',c:['MAT.2.1.1','MAT.2.1.3','MAT.2.5.1','MAT.2.6.2','MAT.2.7.1']},
+{s:'B. Sentido de la medida y C. Sentido espacial: problemas de aplicación con áreas y volúmenes de cuerpos; unidades de capacidad',c:['MAT.2.1.1','MAT.2.1.2','MAT.2.1.3','MAT.2.2.2','MAT.2.6.1','MAT.2.6.2','MAT.2.7.2']}];
+const CR={'MAT.2.3.1':'Formular y comprobar conjeturas sencillas en situaciones del mundo real de forma guiada, trabajando de forma individual o colectiva la utilización del razonamiento inductivo y deductivo para formular argumentos matemáticos, analizando patrones, propiedades y relaciones, y examinando su validez.','MAT.2.1.1':'Interpretar problemas matemáticos de la vida cotidiana, organizando los datos dados, estableciendo las relaciones entre ellos y comprendiendo las preguntas formuladas.','MAT.2.1.2':'Aplicar, en problemas de la vida cotidiana, herramientas y estrategias apropiadas, como pueden ser la descomposición en problemas más sencillos, el tanteo, la estimación, el ensayo y error o la búsqueda de patrones, que contribuyan a la resolución de problemas en situaciones diversas.','MAT.2.1.3':'Obtener las soluciones matemáticas en problemas de la vida cotidiana, activando los conocimientos necesarios, utilizando las herramientas tecnológicas necesarias, interpretando los resultados y aceptando el error como parte del proceso.','MAT.2.2.1':'Comprobar, mediante el razonamiento matemático la corrección de las soluciones de un problema, usando herramientas digitales como calculadoras, hojas de cálculo o programas específicos.','MAT.2.2.2':'Comprobar, mediante la lectura comprensiva, la validez de las soluciones obtenidas en un problema, comprobando su coherencia en el contexto planteado y evaluando el alcance y repercusión de estas soluciones desde diferentes perspectivas: igualdad de género, sostenibilidad, consumo responsable, equidad o no discriminación.','MAT.2.4.1':'Reconocer patrones en la resolución de problemas complejos, organizar datos y descomponer un problema en partes más simples, facilitando su interpretación computacional y relacionando los aspectos básicos de la informática con las necesidades del alumnado.','MAT.2.5.1':'Reconocer y usar las relaciones entre los conocimientos y experiencias matemáticas de los bloques de saberes y de los distintos niveles formando un todo coherente, reconociendo y utilizando las conexiones entre ideas matemáticas en la resolución de problemas de la vida cotidiana.','MAT.2.5.2':'Realizar conexiones entre diferentes procesos matemáticos y entender cómo unas ideas se construyen sobre otras, aplicando conocimientos y experiencias previas y enlazándolas con las nuevas ideas.','MAT.2.6.1':'Reconocer situaciones en diferentes contextos (personal, escolar y social) susceptibles de ser formuladas y resueltas mediante herramientas y estrategias matemáticas, estableciendo conexiones entre el mundo real y las matemáticas y usando los procesos inherentes a la investigación científica y matemática: inferir, medir, comunicar, clasificar y predecir, aplicando procedimientos sencillos en la resolución de problemas en situaciones diversas.','MAT.2.6.2':'Analizar conexiones coherentes entre ideas y conceptos matemáticos con otras materias y con la vida real y aplicarlas mediante el uso de procedimientos sencillos en la resolución de problemas en situaciones de la vida cotidiana.','MAT.2.7.1':'Representar conceptos, procedimientos, información y resultados matemáticos usando herramientas digitales y formas de representación adecuadas para visualizar ideas y estructurar procesos matemáticos, interpretando y resolviendo problemas de la vida real de relativa complejidad y valorando su utilidad para compartir información.','MAT.2.7.2':'Elaborar, en el contexto del problema, representaciones matemáticas utilizando herramientas de interpretación y modelización como expresiones simbólicas o gráficas que ayuden en la búsqueda de estrategias de resolución de una situación problematizada.','MAT.2.8.1':'Comunicar ideas, conceptos y procesos, utilizando el lenguaje matemático apropiado, empleando diferentes medios, incluidos los digitales, oralmente y por escrito, al describir, explicar y justificar razonamientos, procedimientos y conclusiones.','MAT.2.8.2':'Reconocer y emplear el lenguaje matemático presente en los ámbitos personal, social y educativo, expresando y comunicando mensajes con contenido matemático y utilizando terminología matemática adecuada de forma clara, precisa, rigurosa y veraz.'};
+const cual=n=>n<5?'Insuficiente':n<6?'Suficiente':n<7?'Bien':n<9?'Notable':'Sobresaliente';
+const bp=i=>St[i].reduce((s,q)=>s+(q.pts||0),0)*10/6,fn=x=>x.toFixed(1).replace('.',','),nota=()=>St.flat().reduce((s,q)=>s+(q.pts||0),0)/(B.length*6)*10;
+const crit=()=>Object.keys(CR).sort().filter(k=>C.some(c=>c.c.includes(k))).map(k=>{const bs=C.map((c,i)=>c.c.includes(k)?i:-1).filter(i=>i>=0);return{k,t:CR[k],p:Math.round(bs.reduce((s,i)=>s+bp(i),0)/(10*bs.length)*100)}});
+const pl=s=>String(s).replace(/<br\s*\/?>/g,' ; ').replace(/<sup>(.*?)<\/sup>/g,'^$1').replace(/<[^>]+>/g,'').replace(/√/g,'raiz de ').replace(/−/g,'-').replace(/€/g,' euros').replace(/→/g,'->').replace(/[^\x00-\xFF]/g,'');
+const det=()=>{const sol=q=>typeof ans=='function'?ans(q):q.a,nm=document.getElementById('nm').value.trim()||'Sin nombre',cs=document.getElementById('cs').value.trim()||'sin indicar';
+return`<div class="card" id="det"><h2>📋 Detalle de los ejercicios</h2><p class="sub">Alumno/a: ${nm} · Curso: ${cs} · Fecha: ${new Date().toLocaleDateString('es-ES')} · Pistas usadas: ${St.flat().filter(q=>q.hu).length}</p>`+B.map((b,i)=>`<p class="bh" style="background:${TH[i].h}"><b>${b.e} ${b.n}</b> (${fn(bp(i))} / 10)</p>`+St[i].map((q,j)=>`<div class="crit"><b>${mk(q)} ${j+1}.</b> ${q.t}${q.alt?` <i>[${q.alt}]</i>`:''}<small>Respuesta: ${q.ans==null?'sin responder':q.ans}${mode=='con'?' · Solución: '+sol(q):''} · Puntos: ${q.pts==null?'-':String(q.pts).replace('.',',')}${q.hu?' · Pista usada (−0,25)':''}</small></div>`).join('')).join('')+`</div>`};
+function gate(v){v.innerHTML=`<div class="card"><h2>Antes de ver tu nota</h2><p>Elige qué informe quieres generar:</p>
+<div class="opts" role="radiogroup" aria-label="Tipo de informe" style="flex-direction:column;align-items:stretch"><label><input type="radio" name="md" value="sin"> Informe con resultados, sin soluciones</label>
+<label><input type="radio" name="md" value="con"> Informe con resultados y con soluciones (hace falta el código)</label></div>
+<p><label for="cd">Código (solo para el informe con soluciones):</label> <input id="cd" type="password" autocomplete="off" size="14"></p>
+<p><button class="go" onclick="setMode()">Ver mi nota y generar el informe</button></p>${St.flat().some(q=>q.pts===null)?'<p>Aún tienes ejercicios sin responder.</p><p><button class="go" style="background:var(--hi);color:#1d2a5b" onclick="resume()">▶ Seguir por donde iba</button></p>':''}<p class="msg wrong" id="gm" role="status"></p></div>`}
+function setMode(){const m=(document.querySelector('input[name=md]:checked')||{}).value,g=document.getElementById('gm');
+if(!m){g.textContent='Elige una de las dos opciones.';return}
+if(m=='con'&&document.getElementById('cd').value.trim().toLowerCase()!='revelar'){g.textContent='Código incorrecto.';return}
+mode=m;draw()}
+function report(v){if(!mode)return gate(v);
+const n=nota(),fl=St.flat(),pend=fl.filter(q=>q.pts===null).length,nm=document.getElementById('nm').value.trim()||'Sin nombre',cs=document.getElementById('cs').value.trim(),
+A=fl.filter(q=>q.pts>0&&q.tries==1).length,Bc=fl.filter(q=>q.pts>0&&q.tries>1).length,Z=fl.filter(q=>q.pts===0).length,H=fl.filter(q=>q.hu).length,sr=Math.round(n/2),mood=n>=9?'star':n>=7?'cheer':n>=5?'happy':'hi';
+const chip=(l,x,c)=>`<div class="chip" style="background:${c}"><b>${x}</b>${l}</div>`;
+v.innerHTML=`<div class="card"><div class="rhero"><div class="rav">${avSvg(mood)}</div><div class="rtx"><div class="rk">Informe de evaluación${mode=='con'?' · con soluciones':''}</div><div class="rn">${nm}</div><div class="rc">${cs?cs+' · ':''}${new Date().toLocaleDateString('es-ES')}</div><div class="rs" aria-label="${sr} estrellas de 5">${'⭐'.repeat(sr)}${'☆'.repeat(5-sr)}</div></div>
+<div class="rg"><div class="big">${fn(n)}</div><div>/ 10</div><b>${cual(n)}</b></div></div>
+<div class="hintc rmsg"><div class="hav">${avSvg('wink')}</div><div class="bub"><b>Chip dice:</b> ${amsg(n)}${pend?`<br>Te quedan ${pend} ejercicios sin responder.`:''}</div></div>
+<div class="chips">${chip('A la 1.ª',A,'#6fd68a')}${chip('A la 2.ª',Bc,'#5bb8ff')}${chip('Fallos',Z,'#ff8f7a')}${chip('Sin responder',pend,'#e3e3e3')}${chip('Pistas',H,'#ffc93c')}</div>
+<h2>🎨 Saberes básicos</h2><div class="bgrid">`+B.map((b,i)=>`<div class="bc" style="--c:${TH[i].h}"><div class="row"><span>${b.e} <b>${b.n}</b></span><span class="pill">${fn(bp(i))} / 10</span></div><div class="bar"><i style="width:${bp(i)*10}%;background:${TH[i].h}"></i></div><small>${C[i].s}</small></div>`).join('')+`</div>
+<h2>🎯 Criterios de evaluación</h2>`+crit().map((c,j)=>`<div class="crit"><div class="row" style="border:0;padding:0"><span><b>${c.k}</b></span><b>${c.p} %</b></div><small>${c.t}</small><div class="bar" style="height:12px"><i style="width:${c.p}%;background:${TH[j%7].h}"></i></div></div>`).join('')+
+`<p>${pend?'<button class="go" style="background:var(--hi);color:#1d2a5b" onclick="resume()">▶ Seguir por donde iba</button> ':''}<button class="go" onclick="makePdf()">Descargar informe en PDF</button> <button class="go" onclick="prn()">Imprimir / guardar como PDF</button> <button class="go" onclick="mode=null;draw()">Cambiar tipo de informe</button> <button class="go" style="background:var(--hi);color:#1d2a5b" onclick="start()">Empezar de nuevo</button></p><p class="msg" id="pm" role="status"></p></div>`+'<div class="pr">'+det()+'</div>'}
+function buildPdf(){
+const nm=document.getElementById('nm').value.trim()||'Sin nombre',cs=document.getElementById('cs').value.trim()||'sin indicar',n=nota(),d=new window.jspdf.jsPDF({unit:'mm',format:'a4'}),fl=St.flat();
+const KK=[29,42,91],GY=[90,90,90],A=fl.filter(q=>q.pts>0&&q.tries==1).length,Bc=fl.filter(q=>q.pts>0&&q.tries>1).length,Z=fl.filter(q=>q.pts===0).length,Pn=fl.filter(q=>q.pts===null).length,H=fl.filter(q=>q.hu).length,sr=Math.round(n/2),mood=n>=9?'star':n>=7?'cheer':n>=5?'happy':'hi';
+let y=16;try{d.setLineCap('round');d.setLineJoin('round')}catch(e){}
+const GR=['#ff7eb6','#ffc93c','#6fd68a','#5bb8ff'],lerp=(a,b,t)=>a.map((v,i)=>Math.round(v+(b[i]-v)*t)),gc=t=>{const q=Math.min(2.999,t*3),i=Math.floor(q);return lerp(rgb(GR[i]),rgb(GR[i+1]),q-i)};
+const band=(y0,h)=>{const N=70,w=210/N;for(let i=0;i<N;i++){d.setFillColor(...gc(i/(N-1)));d.rect(i*w,y0,w+.3,h,'F')}};
+const ck=h=>{if(y+h>282){d.addPage();y=16}};
+const T=(t,o={})=>{d.setFont('helvetica',o.b?'bold':'normal');d.setFontSize(o.s||10);d.setTextColor(...(o.c||[30,30,30]));d.splitTextToSize(pl(t),o.w||180).forEach(l=>{if(y>280){d.addPage();y=16}d.text(l,o.x||15,y);y+=(o.s||10)*.45});y+=o.g==null?1.5:o.g};
+const H2=(t,col)=>{ck(16);d.setFillColor(...rgb(col));d.setDrawColor(...KK);d.setLineWidth(.4);d.roundedRect(15,y-5,180,9,2.5,2.5,'FD');d.setTextColor(...KK);d.setFont('helvetica','bold');d.setFontSize(12);d.text(pl(t),19,y+1);y+=11};
+// cabecera
+band(0,54);pdfAv(d,12,7,36,mood);
+y=17;T('Informe de evaluación'+(mode=='con'?' (con soluciones)':''),{b:1,s:16,x:54,w:108,c:KK,g:1});T(nm,{b:1,s:13,x:54,w:108,c:KK,g:1});T('Curso: '+cs+'  ·  Fecha: '+new Date().toLocaleDateString('es-ES'),{s:9.5,x:54,w:108,c:KK,g:1});T('Cuerpos geométricos · Matemáticas · 2.º ESO',{s:9,x:54,w:108,c:KK});
+d.setFillColor(255,255,255);d.setDrawColor(...KK);d.setLineWidth(1.2);d.circle(182,27,18,'FD');d.setTextColor(...KK);d.setFont('helvetica','bold');d.setFontSize(26);d.text(fn(n),182,29,{align:'center'});d.setFontSize(10);d.text('/ 10',182,35,{align:'center'});d.setFontSize(8);d.text(pl(cual(n)),182,40,{align:'center'});
+// estrellas y nota
+y=64;for(let i=0;i<5;i++){const cx=21+i*10;d.setFillColor(...rgb(i<sr?'#ffc93c':'#e3e3e3'));d.setDrawColor(...KK);d.setLineWidth(.4);poly(d,stp(0,0).map(q=>[cx+q[0]*.8,y+q[1]*.8]),'FD',true)}
+d.setTextColor(...KK);d.setFont('helvetica','bold');d.setFontSize(15);d.text(pl(cual(n)),76,y+2);
+// globo de Chip
+y=74;d.setFillColor(255,246,220);d.setDrawColor(...KK);d.setLineWidth(.6);d.roundedRect(15,y,180,25,4,4,'FD');pdfAv(d,18,y+2,17,'wink');y+=8;T('Chip dice: '+amsg(n)+(Pn?' Te quedan '+Pn+' ejercicios sin responder.':''),{s:10.5,x:39,w:152,c:KK});
+y=104;
+// estadísticas
+[['A la 1.ª',A,'#6fd68a'],['A la 2.ª',Bc,'#5bb8ff'],['Fallos',Z,'#ff8f7a'],['Sin responder',Pn,'#e3e3e3'],['Pistas',H,'#ffc93c']].forEach((c,i)=>{const x=15+i*37;d.setFillColor(...rgb(c[2]));d.setDrawColor(...KK);d.setLineWidth(.5);d.roundedRect(x,y,34,19,3,3,'FD');d.setTextColor(...KK);d.setFont('helvetica','bold');d.setFontSize(15);d.text(String(c[1]),x+17,y+9,{align:'center'});d.setFontSize(8);d.text(pl(c[0]),x+17,y+15,{align:'center'})});
+y+=26;T('Calificación = puntos obtenidos (48 máx.) / 48 x 10. Acierto a la primera: 1 punto; a la segunda: 0,5; fallo: 0. En los ejercicios con pasos dirigidos, cada paso vale una parte del punto. Usar una pista resta 0,25 puntos en ese ejercicio.',{s:8,c:GY,g:5});
+// saberes
+H2('Saberes básicos trabajados','#ffc93c');
+B.forEach((b,i)=>{ck(24);const col=TH[i].h;d.setFillColor(...rgb(col));d.setDrawColor(...KK);d.setLineWidth(.5);d.circle(19,y-1,3.4,'FD');d.setTextColor(...KK);d.setFont('helvetica','bold');d.setFontSize(8);d.text(String(i+1),19,y+.3,{align:'center'});d.setFontSize(10.5);d.text(pl(b.n),26,y);d.text(fn(bp(i))+' / 10',195,y,{align:'right'});y+=3.5;
+d.setFillColor(236,236,236);d.roundedRect(26,y,169,3.4,1.7,1.7,'F');const w=169*bp(i)/10;if(w>1){d.setFillColor(...rgb(col));d.roundedRect(26,y,w,3.4,1.7,1.7,'F')}y+=7;T(C[i].s+'. Criterios: '+C[i].c.join(', '),{s:8,x:26,w:169,c:GY,g:3})});
+// criterios
+y+=2;H2('Criterios de evaluación (grado de logro)','#5bb8ff');
+crit().forEach((c,j)=>{ck(20);T(c.k+' ('+c.p+' %)',{b:1,c:KK,g:.5});T(c.t,{s:8.5,w:180,c:GY,g:1});d.setFillColor(236,236,236);d.roundedRect(15,y,180,3.4,1.7,1.7,'F');const w=180*c.p/100;if(w>1){d.setFillColor(...rgb(TH[j%7].h));d.roundedRect(15,y,w,3.4,1.7,1.7,'F')}y+=8});
+// detalle
+y+=2;H2('Detalle de los ejercicios','#ff7eb6');
+B.forEach((b,i)=>{ck(30);d.setFillColor(...rgb(TH[i].h));d.roundedRect(15,y-4.2,180,7,2,2,'F');d.setTextColor(...KK);d.setFont('helvetica','bold');d.setFontSize(10);d.text(pl(b.n)+'  ('+fn(bp(i))+' / 10)',18,y+.4);y+=7;
+St[i].forEach((q,j)=>{ck(16);d.setFillColor(...rgb(q.pts==null?'#bdbdbd':q.pts>0?'#2eb872':'#e5533d'));d.circle(18,y-1.2,1.8,'F');
+T((j+1)+'. '+q.t+(q.alt?' ['+q.alt+']':''),{x:22,w:172,g:.5});T('Respuesta: '+(q.ans==null?'sin responder':q.ans)+(mode=='con'?'   Solución: '+ans(q):'')+'   Puntos: '+(q.pts==null?'-':String(q.pts).replace('.',','))+(q.hu?'   Pista usada (-0,25)':''),{s:9,x:26,w:168,c:GY,g:2.5})});y+=2});
+y+=3;T('Criterios de evaluación de Matemáticas de 2.º ESO según la Programación didáctica del Departamento de Matemáticas (IES Ntra. Sra. de la Cabeza, curso 2026-27).',{s:8,c:GY});
+// pie y franjas en todas las páginas
+const pn=d.getNumberOfPages();for(let i=1;i<=pn;i++){d.setPage(i);if(i>1)band(0,4);band(292,5);d.setFont('helvetica','normal');d.setFontSize(8);d.setTextColor(...GY);d.text(pl('Chip · Cuerpos geométricos · 2.º ESO · '+nm),15,289);d.text('Pág. '+i+' / '+pn,195,289,{align:'right'})}
+return d}
+const fname=()=>'informe-2eso-cuerpos-'+(document.getElementById('nm').value.trim()||'Sin nombre').replace(/[^\wáéíóúñÁÉÍÓÚÑ ]/g,'').trim().replace(/\s+/g,'-')+'.pdf';
+const prn=()=>{try{window.print()}catch(e){document.getElementById('pm').textContent='No se puede imprimir desde esta vista. Usa la opción de imprimir de tu navegador.'}};
+async function makePdf(){const pm=document.getElementById('pm');pm.textContent='Preparando el informe...';let d;
+try{d=buildPdf()}catch(e){pm.textContent='No se ha podido crear el PDF en esta vista. Usa "Imprimir / guardar como PDF" o consulta el detalle de abajo.';return}
+const fn2=fname();
+try{const D=window.claude&&claude.use?await claude.use('downloads'):null;if(D){await D.save({filename:fn2,data:d.output('arraybuffer')});pm.textContent='Informe listo.';return}}catch(e){if(e&&e.code=='declined'){pm.textContent='Descarga cancelada.';return}}
+try{const u=URL.createObjectURL(d.output('blob')),a=document.createElement('a');a.href=u;a.download=fn2;document.body.appendChild(a);a.click();a.remove();pm.innerHTML='Si el PDF no se ha descargado, <a href="'+u+'" target="_blank" rel="noopener">ábrelo aquí</a> o usa "Imprimir / guardar como PDF".'}catch(e){pm.textContent='Usa "Imprimir / guardar como PDF" para guardar el informe.'}}
+const f2=x=>String(x).replace('.',','),pen=(x,q)=>Math.max(0,x-(q.hu?.25:0)),okm=q=>(q.tries==1?'¡Correcto! ':'¡Bien, a la segunda! ')+'+'+f2(q.pts)+(q.hu?' (pista: −0,25)':'');let hl=null;
+const K='#1d2a5b',rgb=h=>[1,3,5].map(i=>parseInt(h.substr(i,2),16));
+const qp=(a,b,c,d,e,f,n)=>{n=n||8;return Array.from({length:n+1},(_,i)=>{const t=i/n,u=1-t;return[u*u*a+2*u*t*c+t*t*e,u*u*b+2*u*t*d+t*t*f]})};
+const stp=(x,y)=>Array.from({length:10},(_,i)=>{const t=-Math.PI/2+i*Math.PI/5,r=i%2?2.4:5.6;return[x+r*Math.cos(t),y+r*Math.sin(t)]});
+const pk=a=>a[Math.floor(MR()*a.length)];
+const newAv=()=>({c:pk(['#ffc93c','#ff8f7a','#6fd68a','#5bb8ff','#c58bff','#ff7eb6','#4fd1d1','#ffa94d']),s:pk([0,1,2]),a:pk([0,1,2,3]),x:pk([0,1,2,3]),k:pk(['#ff9aa2','#ff6f91','#ffb3c1'])});
+let AV=newAv();
+const avPrims=(m,o)=>{o=o||AV;const L=[],rx=[16,8,21][o.s];
+const ln=(x1,y1,x2,y2,sw,st)=>L.push({t:'line',x1,y1,x2,y2,sw,st});
+if(o.a==0){ln(29,4,29,12,2.5,K);L.push({t:'circ',x:29,y:4,r:3,f:K,st:K,sw:2})}
+else if(o.a==1){ln(20,5,21,12,2.5,K);ln(38,5,37,12,2.5,K);L.push({t:'circ',x:20,y:5,r:3,f:'#ff5d8f',st:K,sw:1.5},{t:'circ',x:38,y:5,r:3,f:'#ff5d8f',st:K,sw:1.5})}
+else if(o.a==2)L.push({t:'poly',p:stp(29,7),f:'#ffe066',st:K,sw:1.5});
+else L.push({t:'poly',p:[[20,13],[22,4],[26,10],[29,3],[32,10],[36,4],[38,13]],f:'#ffe066',st:K,sw:1.5});
+L.push({t:'rect',x:6,y:12,w:46,h:42,r:rx,f:o.c,st:K,sw:2.5});
+if(o.x==3)L.push({t:'path',p:qp(6,30,6,8,29,8).concat(qp(29,8,52,8,52,30)),st:K,sw:3},{t:'rect',x:2,y:26,w:7,h:14,r:3,f:'#ff5d8f',st:K,sw:2},{t:'rect',x:49,y:26,w:7,h:14,r:3,f:'#ff5d8f',st:K,sw:2});
+L.push({t:'circ',x:13,y:34,r:3,f:o.k,sw:0},{t:'circ',x:45,y:34,r:3,f:o.k,sw:0});
+const dot=x=>L.push({t:'circ',x,y:24,r:3.5,f:K}),arc=x=>L.push({t:'path',p:qp(x-4,26,x,19,x+4,26),st:K,sw:2.5}),star=x=>L.push({t:'poly',p:stp(x,24),f:K});
+if(m=='cheer'||m=='happy'){arc(21);arc(37)}else if(m=='wink'){dot(21);arc(37)}else if(m=='star'){star(21);star(37)}else{dot(21);dot(37)}
+if(m=='cheer'||m=='star')L.push({t:'poly',p:qp(19,36,29,48,39,36),f:K,st:K,sw:2});else L.push({t:'path',p:qp(20,36,29,45,38,36),st:K,sw:2.5});
+if(o.x==1){L.push({t:'circ',x:21,y:24,r:7,st:K,sw:2},{t:'circ',x:37,y:24,r:7,st:K,sw:2});ln(28,24,30,24,2,K)}
+if(o.x==2)L.push({t:'poly',p:[[47,13],[56,7],[56,19]],f:'#ff5d8f',st:K,sw:1.5},{t:'poly',p:[[47,13],[39,7],[39,19]],f:'#ff5d8f',st:K,sw:1.5},{t:'circ',x:47,y:13,r:2.5,f:'#ff5d8f',st:K,sw:1.5});
+return L};
+const avSvg=m=>{const pts=p=>p.map(q=>q[0].toFixed(1)+','+q[1].toFixed(1)).join(' ');
+return`<svg viewBox="0 0 58 64" width="56" height="62" role="img" aria-label="Chip, tu ayudante">`+avPrims(m).map(p=>{const a=`fill="${p.f||'none'}" stroke="${p.st||'none'}" stroke-width="${p.sw||0}" stroke-linecap="round" stroke-linejoin="round"`;
+return p.t=='rect'?`<rect x="${p.x}" y="${p.y}" width="${p.w}" height="${p.h}" rx="${p.r}" ${a}/>`:p.t=='circ'?`<circle cx="${p.x}" cy="${p.y}" r="${p.r}" ${a}/>`:p.t=='line'?`<line x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}" ${a}/>`:p.t=='poly'?`<polygon points="${pts(p.p)}" ${a}/>`:`<polyline points="${pts(p.p)}" ${a}/>`}).join('')+'</svg>'};
+const poly=(d,pts,sty,closed)=>{const dl=[];for(let i=1;i<pts.length;i++)dl.push([pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]]);d.lines(dl,pts[0][0],pts[0][1],[1,1],sty,closed)};
+const pdfAv=(d,X,Y,S,m)=>{const k=S/58;avPrims(m).forEach(p=>{const fl=p.f&&p.f!='none',sk=p.st&&p.st!='none'&&p.sw,sty=fl&&sk?'FD':fl?'F':'S';if(!fl&&!sk)return;if(fl)d.setFillColor(...rgb(p.f));if(sk){d.setDrawColor(...rgb(p.st));d.setLineWidth(p.sw*k)}
+if(p.t=='rect')d.roundedRect(X+p.x*k,Y+p.y*k,p.w*k,p.h*k,p.r*k,p.r*k,sty);else if(p.t=='circ')d.circle(X+p.x*k,Y+p.y*k,p.r*k,sty);else if(p.t=='line')d.line(X+p.x1*k,Y+p.y1*k,X+p.x2*k,Y+p.y2*k);else poly(d,p.p.map(q=>[X+q[0]*k,Y+q[1]*k]),p.t=='poly'?sty:'S',p.t=='poly')})};
+const TH=[
+{b:'#fff6dc',h:'#ffc93c',l:'#e8dcb5',o:'#1f9e89',db:'#141a36',dl:'#34407a'},
+{b:'#e3f2ff',h:'#5bb8ff',l:'#b9d9f0',o:'#1f8a70',db:'#10233b',dl:'#2c4a73'},
+{b:'#f1e6ff',h:'#c58bff',l:'#d9c4f2',o:'#2a9d8f',db:'#21183d',dl:'#4a3a7a'},
+{b:'#e2f8e7',h:'#6fd68a',l:'#bde2c4',o:'#1b8f5a',db:'#112a1f',dl:'#2f5a45'},
+{b:'#ffe8e2',h:'#ff8f7a',l:'#f1c3b8',o:'#1f9e89',db:'#301a1d',dl:'#6a3a3f'},
+{b:'#e0f7f7',h:'#4fd1d1',l:'#b3dfdf',o:'#1a8a8a',db:'#0f2a2c',dl:'#2a5a5c'},
+{b:'#ffeed2',h:'#ffa94d',l:'#efd1a4',o:'#2e9e6b',db:'#2e2314',dl:'#66502c'},
+{b:'#fde6f2',h:'#ff7eb6',l:'#f1c1da',o:'#1f9e89',db:'#2f1a2b',dl:'#6a3a5a'},
+{b:'#e8ecff',h:'#7a8cff',l:'#c5cef2',o:'#1f9e89',db:'#171a3a',dl:'#3a4180'}];
+function theme(i){const t=TH[Math.min(i,TH.length-1)];let e=document.getElementById('th');if(!e){e=document.createElement('style');e.id='th';document.head.appendChild(e)}
+const dk=`--bg:${t.db};--hi:${t.h};--line:${t.dl};--ok:#46d1bb`;
+e.textContent=`:root{--bg:${t.b};--hi:${t.h};--line:${t.l};--ok:${t.o}}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){${dk}}}:root[data-theme="dark"]{${dk}}`}
+const mk=q=>q.pts==null?'⬜':q.pts>0?'✅':'❌';
+const amsg=n=>n>=9?'¡Increíble! Dominas las áreas y los volúmenes de los cuerpos geométricos. ¡Eres una estrella!':n>=7?'¡Muy bien! Estás muy cerca de la cima. Repasa los fallos y llegarás arriba del todo.':n>=5?'¡Aprobado! Buen trabajo. Mira el detalle de los ejercicios y repasa lo que se te resistió.':'No te desanimes. Repasa los recuadros «Recuerda», usa las pistas y vuelve a intentarlo. ¡Tú puedes!';
+const say=(t,m)=>{const a=document.getElementById('ava'),b=document.getElementById('avt');if(a)a.innerHTML=avSvg(m||'hi');if(b)b.textContent=t};
+const HT=[];
+const hintFor=t=>{const h=HT.find(x=>x[0].test(t));return h?h[1]:'Lee con calma el enunciado, repasa el recuadro «Recuerda» y resuélvelo paso a paso.'};
+let lastCur=0,lm='cheer';function resume(){let t=lastCur;if(!St[t].some(q=>q.pts===null))t=St.findIndex(b=>b.some(q=>q.pts===null));if(t<0)return;cur=t;draw();const k=St[t].findIndex(q=>q.pts===null),e=document.getElementById('i'+k)||document.getElementById('g'+k)||document.querySelector('input[name=o'+k+']');if(e){e.scrollIntoView({block:'center'});e.focus()}}function hint(i){const q=St[cur][i];if(q.hu||q.pts!==null)return;q.hu=1;const ms=['wink','star','happy','cheer'].filter(x=>x!=lm);q.hm=lm=ms[Math.floor(MR()*ms.length)];hl=q;draw();hl=null;const a=document.getElementById('ava');if(a)a.innerHTML=avSvg(q.hm)}
+const hb=(q,i)=>q.hu?`<div class="t hintc"><div class="hav${q===hl?' pop':''}">${avSvg(q.hm||'wink')}</div><div class="bub"><b>Chip te da una pista:</b> ${q.h}<div><button class="go" onclick="speak(St[cur][${i}].h,this)">🔊 Escuchar la pista</button></div></div></div>`:q.pts===null?`<button class="go hb" onclick="hint(${i})">💡 Pedir pista (−0,25 puntos)</button>`:'';
+const PRES='¡Hola! Soy Chip, tu ayudante de repaso. Escribe tu nombre y tu curso y empezamos. En cada ejercicio puedes pedirme una pista, y si quieres te la leo en voz alta. Pero ojo: si usas una pista, ese ejercicio tendrá una penalización del 25 % de su valor, es decir, 0,25 puntos menos. Y la respuesta tendrás que encontrarla tú. ¡Mucho ánimo!';
+let VC=[],VK='chip_voz2';
+const FM=/m[oó]nica|paulina|helena|sabina|laura|elvira|dalia|salome|lola|esperanza|marisol|female|mujer|mar[ií]a|luc[ií]a|elena|ximena|valentina|camila/i,ML=/pablo|diego|jorge|raul|carlos|enrique|alvaro|alonso|jaime|andr[eé]s|gonzalo|tom[aá]s|male|hombre/i;
+const vsc=v=>(/natural|neural|online|premium|enhanced|mejorada/i.test(v.name)?40:0)+(/google/i.test(v.name)?20:0)+(/^es-(ES|MX|US)/i.test(v.lang)?3:0)-(/desktop|espeak|compact|novelty/i.test(v.name)?25:0);
+const gv=()=>{try{return localStorage.getItem(VK)=='P'?'P':'L'}catch(e){return'L'}};
+function loadVoices(){const ss=window.speechSynthesis,sel=document.getElementById('vz');if(ss)VC=((ss.getVoices&&ss.getVoices())||[]).filter(v=>/^es/i.test(v.lang)).sort((a,b)=>vsc(b)-vsc(a));
+if(sel){const c=gv();sel.innerHTML=`<option value="L"${c=='L'?' selected':''}>Voz de Laura</option><option value="P"${c=='P'?' selected':''}>Voz de Pablo</option>`}}
+const pickVoice=()=>{if(!VC.length)loadVoices();if(!VC.length)return null;const L=gv()=='L',rx=L?/laura/i:/pablo/i,mine=L?FM:ML,other=L?ML:FM;
+return VC.find(v=>rx.test(v.name))||VC.find(v=>mine.test(v.name))||VC.find(v=>!other.test(v.name))||VC[0]};
+function setVz(n){try{localStorage.setItem(VK,n)}catch(e){}speak(n=='P'?'¡Hola! Soy Chip, y esta es la voz de Pablo.':'¡Hola! Soy Chip, y esta es la voz de Laura.',null)}
+try{window.speechSynthesis.onvoiceschanged=loadVoices}catch(e){}
+function speak(text,btn){const ss=window.speechSynthesis;if(!ss||typeof SpeechSynthesisUtterance=='undefined'){if(btn)btn.textContent='🔇 La voz no está disponible aquí';return}
+if(btn&&btn.dataset.on=='1'){ss.cancel();return}
+ss.cancel();document.querySelectorAll('[data-on="1"]').forEach(x=>{x.dataset.on='0';x.textContent=x.dataset.t});
+const fin=()=>{if(btn){btn.dataset.on='0';btn.textContent=btn.dataset.t}};if(btn){btn.dataset.t=btn.dataset.t||btn.textContent;btn.dataset.on='1';btn.textContent='⏹ Parar'}
+const v=pickVoice(),fr=(text.match(/[^.!?…]+[.!?…]*/g)||[text]).map(x=>x.trim()).filter(Boolean).flatMap(x=>x.length>95?(x.match(/[^,;:]+[,;:]?/g)||[x]).reduce((r,p)=>{const l=r[r.length-1];if(l&&l.length+p.length<70)r[r.length-1]=l+p;else r.push(p);return r},[]).map(y=>y.trim()):[x]);
+fr.forEach((t,i)=>{const u=new SpeechSynthesisUtterance(t);u.lang=v?v.lang:'es-ES';if(v)u.voice=v;const ex=/!\s*$/.test(t),qs=/\?\s*$/.test(t);u.pitch=Math.min(2,(gv()=='P'?1.5:1.8)+MR()*.15+(ex?.1:0)+(qs?.12:0));u.rate=1.1+MR()*.06+(ex?.04:0);u.volume=1;if(i==fr.length-1){u.onend=fin;u.onerror=fin}else u.onerror=fin;ss.speak(u)})}
+const stc=q=>q.pts===null?(q.tries?'w':'n'):q.pts>0?(q.tries==1?'a':'b'):'z';
+const hs=x=>{let h=0;for(const c of x)h=(h*31+c.charCodeAt(0))%1679616;return h.toString(36)};
+const b64=x=>btoa(unescape(encodeURIComponent(x))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+const ub64=x=>decodeURIComponent(escape(atob(x.replace(/-/g,'+').replace(/_/g,'/'))));
+function mkCode(){const cl=x=>String(x).replace(/[;|~]/g,''),p=[seed,cur,cl(document.getElementById('nm').value.trim()),cl(document.getElementById('cs').value.trim()),St.flat().map(q=>(q.hu?'h':'')+(q.steps?'s'+q.log.map(cl).join('~'):stc(q)+(q.ans==null?'':cl(q.ans)))).join(';')].join('|');return'SE.'+b64(p)+'.'+hs(p)}
+function ldCode(txt){try{const m=txt.trim().replace(/\s+/g,'').match(/^SE\.([\w-]+)\.([0-9a-z]+)$/);if(!m)throw 0;const p=ub64(m[1]);if(hs(p)!==m[2])throw 1;const a=p.split('|'),it=a[4].split(';');if(it.length!=B.length*6)throw 2;gen(+a[0]);let k=0;
+St.forEach(b=>b.forEach(q=>{let s=it[k++];if(s[0]=='h'){q.hu=1;s=s.slice(1)}const c=s[0],v=s.slice(1);if(c=='n')return;
+if(c=='s'){if(q.steps)v.split('~').filter(x=>x!=='').forEach(r=>{if(q.pts===null)stepApply(q,r)});return}
+q.ans=v;q.tries=c=='a'||c=='w'?1:2;if(c=='w'){q.msg='Casi. Repasa el recuadro "Recuerda" e inténtalo otra vez.';if(q.o)q.bad=[typeof q.o[0]=='number'?+v:v]}else{q.pts=c=='a'?pen(1,q):c=='b'?pen(.5,q):0;q.msg=c!='z'?okm(q):'La solución era '+(typeof ans=='function'?ans(q):f(q.a))+'. ¡Fíjate cómo se hace!'}}));
+document.getElementById('nm').value=a[2];document.getElementById('cs').value=a[3];cur=Math.min(+a[1],B.length);mode=null;draw();return''}catch(e){return'Código no válido, incompleto o de otra unidad. Revisa que lo has copiado entero.'}}
+const pnl=h=>{document.getElementById('pn').innerHTML=h};
+function svOpen(){const c=mkCode();pnl(`<div class="card"><h2>Tu código de progreso</h2><p>Copia este código y guárdalo. Para continuar, abre de nuevo el enlace, pulsa «Continuar con un código» y pégalo.</p><textarea id="cdt" readonly rows="5" style="width:100%">${c}</textarea><p><button class="go" onclick="cpCode()">Copiar código</button> <button class="go" onclick="pnl('')">Cerrar</button> <span class="msg good" id="cpm"></span></p><p class="sub">Longitud del código: ${c.length} caracteres</p></div>`)}
+function cpCode(){const t=document.getElementById('cdt'),m=document.getElementById('cpm');t.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}
+if(!ok&&navigator.clipboard)navigator.clipboard.writeText(t.value).then(()=>m.textContent='Copiado.',()=>m.textContent='Selecciona el texto y cópialo a mano.');else m.textContent=ok?'Copiado.':'Selecciona el texto y cópialo a mano.'}
+function ldOpen(){pnl(`<div class="card"><h2>Continuar con un código</h2><p>Pega aquí tu código de progreso:</p><textarea id="cdi" rows="4" style="width:100%"></textarea><p><button class="go" onclick="ldGo()">Cargar</button> <button class="go" onclick="pnl('')">Cerrar</button></p><p class="msg wrong" id="ldm" role="status"></p></div>`)}
+function ldGo(){const m=ldCode(document.getElementById('cdi').value);if(m)document.getElementById('ldm').textContent=m;else pnl('')}
+start();
+say(PRES,'cheer');
+loadVoices();
+</script></body></html>
